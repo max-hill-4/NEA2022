@@ -6,20 +6,31 @@ width ,height = 640,480
 midWidth , midHeight = width/2 , height/2
 titleScreenColor=(100,200,255)
 loginScreenColor=(255,80,150)
+
+
+
 # Pygame creates  hidden surface ready to be shown on screen.
-titleScreenLogin = py.image.load("recources/titleScreenLogin.png")
-titleScreenCreate = py.image.load("recources/titleScreenCreate.png")
-titleScreenQuit = py.image.load("recources/titleScreenQuit.png")
-titleScreenName = py.image.load("recources/titleScreenName.png")
-backButtonImage = py.image.load("recources/backButton.png")
-textBoxImageUnselected = textBoxImage = py.image.load("recources/textBox.png")
-textBoxImageSelected = py.image.load("recources/textBoxSelected.png")
-fullscreenImage = py.image.load("recources/fullscreen.png")
+button_login_image = py.image.load("recources/button_login_image.png")
+button_create_image = py.image.load("recources/button_create_image.png")
+button_quit_image = py.image.load("recources/button_quit_image.png")
+button_back_image = py.image.load("recources/button_back_image.png")
+button_confirm_image = py.image.load("recources/button_confirm_image.png")
+
+text_box_image =  py.image.load("recources/text_box_image.png")
+text_box_image_selected = py.image.load("recources/text_box_image_selected.png")
+
+title_name_image = py.image.load("recources/title_name_image.png")
+
+
+
+
+
+
 # Button size.
-titleButtonWidth = titleScreenLogin.get_width()
-titleButtonHeight = titleScreenLogin.get_height()
-titleNameWidth = titleScreenName.get_width() 
-titleNameHeight = titleScreenName.get_height()
+titleButtonWidth = button_login_image.get_width()
+titleButtonHeight = button_login_image.get_height()
+titleNameWidth = title_name_image.get_width() 
+titleNameHeight = title_name_image.get_height()
 caption = "Noughts and Crosses"
 font = py.font.Font(None, 32)
 
