@@ -6,8 +6,6 @@ __author__ = "Maxwell Hill"
 __license__ = "GPL"
 __email__ = "maxwellhill2004@icloud.com"
 
-#push test
-
 # Public Libraries
 import pygame as py
 

@@ -22,10 +22,6 @@ text_box_image_selected = py.image.load("resources/text_box_image_selected.png")
 title_name_image = py.image.load("resources/title_name_image.png")
 
 
-
-
-
-
 # Button size.
 titleButtonWidth = button_login_image.get_width()
 titleButtonHeight = button_login_image.get_height()
@@ -33,5 +29,3 @@ titleNameWidth = title_name_image.get_width()
 titleNameHeight = title_name_image.get_height()
 caption = "Noughts and Crosses"
 font = py.font.Font(None, 32)
-
-
