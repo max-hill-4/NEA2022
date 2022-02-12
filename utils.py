@@ -1,5 +1,7 @@
-import pygame as py 
+import pygame as py
 from config import *
+
+
 class InputBox:
     """Creates box with positional parameters
     to display what the user is typing on 
@@ -38,13 +40,13 @@ class InputBox:
                 else:
                     self.text += event.unicode
 
-    def draw(self,surface):
+    def draw(self, surface):
         # print("sel")
         surface.blit(self.image, (self.xpos, self.ypos))
         textSurface = font.render(self.text, True, (0, 0, 0))
         if self.hidden == True:
             textSurface = font.render(len(self.text)*'*', True, (0, 0, 0))
-
+            
         surface.blit(textSurface, (self.xpos + 10, self.ypos + 10))
 
 
@@ -77,5 +79,5 @@ class Button:
                 if self.ypos < pos[1] < self.ypos + self.buttonHeight:
                     return True
 
-    def draw(self,surface):
+    def draw(self, surface):
         surface.blit(self.image, (self.xpos, self.ypos))
