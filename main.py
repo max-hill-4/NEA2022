@@ -12,7 +12,7 @@ import pygame as py
 # Private Libraries
 from utils import *
 
-class Game:
+class Menu:
 
     def __init__(self):
 
@@ -100,5 +100,5 @@ using a class much easier for menu cycling.
 """
 
 if __name__=='__main__':
-    h = Game()
+    h = Menu()
     h.title_screen()

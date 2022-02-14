@@ -41,12 +41,11 @@ class InputBox:
                     self.text += event.unicode
 
     def draw(self, surface):
-        # print("sel")
         surface.blit(self.image, (self.xpos, self.ypos))
         textSurface = font.render(self.text, True, (0, 0, 0))
         if self.hidden == True:
             textSurface = font.render(len(self.text)*'*', True, (0, 0, 0))
-            
+
         surface.blit(textSurface, (self.xpos + 10, self.ypos + 10))
 
 
@@ -81,3 +80,7 @@ class Button:
 
     def draw(self, surface):
         surface.blit(self.image, (self.xpos, self.ypos))
+
+class Database:
+    def __init__(self):
+        pass
