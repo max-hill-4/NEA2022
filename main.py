@@ -56,13 +56,13 @@ class Menu:
         text_box_username = InputBox(200, 200)
         text_box_password = InputBox(200, 300, True)
         button_back = Button(button_back_image, 0, 0)
-        button_confirm = Button(button_confirm_image, 250, 400)
+        button_confirm = Button(button_confirm_image, 270, 400)
         object_list = (text_box_username, text_box_password, button_back, button_confirm) 
 
         while True:
 
             self.window.fill(LOGIN_SCREEN_COLOR)    
-           
+            self.window.blit(title_login_image, (220, 75))
             for n in object_list:
                 n.draw(self.window)
             
@@ -87,7 +87,35 @@ class Menu:
             
 
     def create_screen(self):
-        print("create_screen")
+        text_box_username = InputBox(200, 200)
+        text_box_password = InputBox(200, 300, True)
+        button_back = Button(button_back_image, 0, 0)
+        button_confirm = Button(button_confirm_image, 270, 400)
+        object_list = (text_box_username, text_box_password, button_back, button_confirm) 
+
+        while True:
+
+            self.window.fill(CREATE_SCREEN_COLOR)    
+            self.window.blit(title_create_image, (220, 75))
+            for n in object_list:
+                n.draw(self.window)
+            
+            py.display.update()
+
+            for event in py.event.get():
+                if event.type == py.QUIT:
+                    self.quit_screen()
+                
+                text_box_username.handle(event)
+                text_box_password.handle(event)
+
+                if button_back.pressed(event):
+                    self.title_screen()
+
+                if button_confirm.pressed(event):
+                    Database().add_data(text_box_username.text, text_box_password.text)
+
+           
 
     def quit_screen(self):
         print("quit_screen")

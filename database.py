@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
-
+import hashlib
 class Database:
     def __init__(self):
 
