@@ -80,7 +80,3 @@ class Button:
 
     def draw(self, surface):
         surface.blit(self.image, (self.xpos, self.ypos))
-
-class Database:
-    def __init__(self):
-        pass

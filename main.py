@@ -94,11 +94,4 @@ class Menu:
         quit()
 
 
-""" Instance of a game created named g, although
-pygame is unable to create multiple windows in the same instance,
-using a class much easier for menu cycling.
-"""
-
-if __name__=='__main__':
-    h = Menu()
-    h.title_screen()
+Menu().title_screen()

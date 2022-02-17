@@ -1,22 +1,31 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-
-mydb = mysql.connector.connect(
-        host='database-1.c1ajdf2akg8w.eu-west-2.rds.amazonaws.com',
-        user='admin', 
-        password = "eTWgAS3ZvDzSpA2",
-        database = "test"
-        )
+class Database:
+    def __init__(self):
 
 
-mycursor = mydb.cursor()
+        self.mydb = mysql.connector.connect(
+
+            host='database-1.c1ajdf2akg8w.eu-west-2.rds.amazonaws.com',
+            user='admin', 
+            password = "eTWgAS3ZvDzSpA2",
+            database = "test"
+            )
 
 
-mycursor.execute("SELECT * FROM accounts")
+        self.mycursor = self.mydb.cursor()
 
-myresult = mycursor.fetchall()
 
-for x in myresult:
-  print(x)
-#change
+
+    def get_all(self):
+
+        self.mycursor.execute("SELECT * FROM accounts")
+
+        self.myresult = self.mycursor.fetchall()
+
+        for x in self.myresult:          
+            print(x)
+
+
+Database().get_all()
