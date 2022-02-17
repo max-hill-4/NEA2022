@@ -13,13 +13,10 @@ class Database:
             database = "test"
             )
 
-
-
     def get_data(self):
 
         mycursor = self.mydb.cursor()
-        mycursor.execute("SELECT * FROM accounts")
-        
+        mycursor.execute("SELECT * FROM accounts")        
         return mycursor.fetchall()
         
 
@@ -28,9 +25,8 @@ class Database:
         for row in self.get_data():
             for record in row:
                 if record == data:
-                    print(f'{data} was found in the database!')
+                    print(f'{data} was found in the database on row {row[0]}')
                     return True 
 
-        
 
-Database().check_data('data')
+print(Database().get_data())

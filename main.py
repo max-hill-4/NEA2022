@@ -94,5 +94,5 @@ class Menu:
         print("quit_screen")
         quit()
 
-Database().check_data('admin2')
+Database().check_data('admin')
 Menu().title_screen()
