@@ -52,10 +52,7 @@ class Menu:
 
 
     def login_screen(self):
-        """ Function that handles logging into 
-        your account and checks user input
-        against a database.
-        """
+      
         text_box_username = InputBox(200, 200)
         text_box_password = InputBox(200, 300, True)
         button_back = Button(button_back_image, 0, 0)
@@ -82,7 +79,10 @@ class Menu:
                     self.title_screen()
 
                 if button_confirm.pressed(event):
-                    pass
+                    if Database().check_data(text_box_username.text):
+                    	if Database().check_data(text_box_password.text):
+                    		print('both fields have been found')
+
             
             
 
