@@ -11,6 +11,7 @@ import pygame as py
 
 # Private Libraries
 from utils import *
+from database import Database
 
 class Menu:
 
@@ -93,5 +94,5 @@ class Menu:
         print("quit_screen")
         quit()
 
-
+Database().check_data('admin2')
 Menu().title_screen()
