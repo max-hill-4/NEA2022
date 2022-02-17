@@ -28,5 +28,3 @@ class Database:
                     print(f'{data} was found in the database on row {row[0]}')
                     return True 
 
-
-print(Database().get_data())

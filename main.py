@@ -36,18 +36,18 @@ class Menu:
                 n.draw(self.window)
 
             py.display.update()
-
-            if button_login.pressed():
-                self.login_screen()
-
-            if button_create.pressed():
-                self.create_screen()
-
-            if button_quit.pressed():
-                self.quit_screen()
             
             for event in py.event.get():
                 if event.type == py.QUIT:
+                    self.quit_screen()
+
+                if button_login.pressed(event):
+                    self.login_screen()
+
+                if button_create.pressed(event):
+                    self.create_screen()
+
+                if button_quit.pressed(event):
                     self.quit_screen()
 
 
@@ -70,12 +70,6 @@ class Menu:
                 n.draw(self.window)
             
             py.display.update()
-            
-            if Button.pressed(button_back):
-                self.title_screen()
-
-            if Button.pressed(button_confirm):
-                pass
 
             for event in py.event.get():
                 if event.type == py.QUIT:
@@ -84,6 +78,11 @@ class Menu:
                 text_box_username.handle(event)
                 text_box_password.handle(event)
 
+                if button_back.pressed(event):
+                    self.title_screen()
+
+                if button_confirm.pressed(event):
+                    pass
             
             
 
@@ -94,5 +93,6 @@ class Menu:
         print("quit_screen")
         quit()
 
-Database().check_data('admin')
-Menu().title_screen()
+
+if __name__ == '__main__':
+	Menu().title_screen()

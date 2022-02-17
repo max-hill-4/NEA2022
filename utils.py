@@ -65,14 +65,14 @@ class Button:
         self.buttonHeight = image.get_height()
         self.image = image
 
-    def pressed(self):
+    def pressed(self,event):
         """ Uses inbuilt
          pygame method to check if 
         the left mouse button is being pressed down
         if it is being pressed it checks if the mouse is 
         hovering over the button if it is then it returns True
         """
-        if py.mouse.get_pressed()[0] == True:
+        if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
             if self.xpos < pos[0] < self.xpos + self.buttonWidth:
                 if self.ypos < pos[1] < self.ypos + self.buttonHeight:
