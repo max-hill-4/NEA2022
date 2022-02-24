@@ -1,3 +1,6 @@
+import sys 
+sys.path.append('E:\modules')
+
 import mysql.connector
 from mysql.connector import errorcode
 import hashlib
@@ -36,6 +39,9 @@ class Database:
 
     def add_data(self,username,password):
 
+        if self.check_data(username):
+            print("Username Taken")
+            return
         sql = "INSERT INTO accounts (username, password) VALUES (%s, %s)"
         val = (username,password)
         self.mycursor.execute(sql, val)
@@ -44,3 +50,5 @@ class Database:
 
 if __name__ == '__main__':
     print(Database().get_data())
+    print(Database().check_data('admin'))
+
