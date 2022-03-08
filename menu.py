@@ -7,7 +7,6 @@ class Menu(object):
         
         self.done = False
         self.next_state = None
-        print("menu class ran")
         self.button_login = Button(button_login_image, 110, 300)
         self.button_create = Button(button_create_image, 270, 300)
         self.button_quit = Button(button_quit_image, 430, 300)
