@@ -14,8 +14,8 @@ class Create(object):
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.button_confirm = tl.Button(cfg.button_confirm_image, 300, 400)
 
-        self.object_list = (
-            self.text_box_username, self.text_box_password, self.button_back, self.button_confirm)
+        self.object_list = (self.text_box_username, self.text_box_password,
+                            self.button_back, self.button_confirm)
 
     def get_event(self, event):
 
@@ -33,8 +33,6 @@ class Create(object):
         self.text_box_password.run(event)
 
     def draw(self, window):
-
-        window.fill(cfg.login_screen_color)
 
         for n in self.object_list:
             n.draw(window)

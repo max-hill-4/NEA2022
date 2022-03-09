@@ -40,7 +40,6 @@ class Game(object):
 
     def run(self):
         while not self.state.done:
-
             self.event_loop()
             self.update()
             self.draw()
