@@ -19,7 +19,6 @@ class Menu(object):
             sys.exit()
 
         if self.button_login.pressed(event):
-            print("press")
             self.next_state = "LOGIN"
 
         if self.button_quit.pressed(event):

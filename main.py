@@ -4,7 +4,7 @@ import pygame as py
 import config
 import menu
 import login
-import create
+import lobby
 
 py.init()
 
@@ -14,7 +14,7 @@ window = py.display.set_mode((config.width, config.height))
 states = {
     "MENU": menu.Menu(),
     "LOGIN": login.Login(),
-    "CREATE": create.Create()
+    "LOBBY": lobby.Lobby()
 }
 
 

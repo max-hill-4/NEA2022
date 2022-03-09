@@ -42,7 +42,6 @@ class InputBox(object):
                     self.text += event.unicode
 
     def draw(self, surface):
-        # print("sel")
         surface.blit(self.image, (self.xpos, self.ypos))
         textSurface = cfg.font.render(self.text, True, (0, 0, 0))
         if self.hidden:
