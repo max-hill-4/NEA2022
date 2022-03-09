@@ -1,9 +1,10 @@
-import pygame as py 
-from config import *
+import pygame as py
+import config as cfg
 
-class InputBox:
+
+class InputBox(object):
     """Creates box with positional parameters
-    to display what the user is typing on 
+    to display what the user is typing on
     in window.
     """
 
@@ -11,25 +12,26 @@ class InputBox:
 
         self.xpos = xpos
         self.ypos = ypos
-        self.text_box_width = text_box_image.get_width()
-        self.text_box_height = text_box_image.get_height()
-        self.image = text_box_image
+        self.text_box_width = cfg.text_box_image.get_width()
+        self.text_box_height = cfg.text_box_image.get_height()
+        self.image = cfg.text_box_image
         self.selected = False
         self.text = ''
         self.hidden = hidden
 
     def run(self, event):
-        """ 
+        """
         """
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
-            if (self.xpos < pos[0] < self.xpos + self.text_box_width) and (self.ypos < pos[1] < self.ypos + self.text_box_height):
+            if (self.xpos < pos[0] < self.xpos + self.text_box_width and
+                    self.ypos < pos[1] < self.ypos + self.text_box_height):
                 self.selected = True
-                self.image = text_box_image_selected
+                self.image = cfg.text_box_image_selected
 
             else:
                 self.selected = False
-                self.image = text_box_image
+                self.image = cfg.text_box_image
 
         if self.selected:
             if event.type == py.KEYDOWN:
@@ -39,12 +41,12 @@ class InputBox:
                 else:
                     self.text += event.unicode
 
-    def draw(self,surface):
+    def draw(self, surface):
         # print("sel")
         surface.blit(self.image, (self.xpos, self.ypos))
-        textSurface = font.render(self.text, True, (0, 0, 0))
-        if self.hidden == True:
-            textSurface = font.render(len(self.text)*'*', True, (0, 0, 0))
+        textSurface = cfg.font.render(self.text, True, (0, 0, 0))
+        if self.hidden:
+            textSurface = cfg.font.render(len(self.text)*'*', True, (0, 0, 0))
 
         surface.blit(textSurface, (self.xpos + 10, self.ypos + 10))
 
@@ -66,11 +68,11 @@ class Button:
         self.buttonHeight = image.get_height()
         self.image = image
 
-    def pressed(self,event):
+    def pressed(self, event):
         """ Uses inbuilt
-         pygame method to check if 
+         pygame method to check if
         the left mouse button is being pressed down
-        if it is being pressed it checks if the mouse is 
+        if it is being pressed it checks if the mouse is
         hovering over the button if it is then it returns True
         """
         if event.type == py.MOUSEBUTTONDOWN:
@@ -79,5 +81,5 @@ class Button:
                 if self.ypos < pos[1] < self.ypos + self.buttonHeight:
                     return True
 
-    def draw(self,surface):
+    def draw(self, surface):
         surface.blit(self.image, (self.xpos, self.ypos))
