@@ -1,5 +1,6 @@
 import pygame as py 
 from config import *
+
 class InputBox:
     """Creates box with positional parameters
     to display what the user is typing on 
@@ -10,8 +11,8 @@ class InputBox:
 
         self.xpos = xpos
         self.ypos = ypos
-        self.buttonWidth = text_box_image.get_width()
-        self.buttonHeight = text_box_image.get_height()
+        self.text_box_width = text_box_image.get_width()
+        self.text_box_height = text_box_image.get_height()
         self.image = text_box_image
         self.selected = False
         self.text = ''
@@ -22,7 +23,7 @@ class InputBox:
         """
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
-            if (self.xpos < pos[0] < self.xpos + self.buttonWidth) and (self.ypos < pos[1] < self.ypos + self.buttonHeight):
+            if (self.xpos < pos[0] < self.xpos + self.text_box_width) and (self.ypos < pos[1] < self.ypos + self.text_box_height):
                 self.selected = True
                 self.image = text_box_image_selected
 
@@ -58,20 +59,21 @@ class Button:
         """ Constructor method that sets parameters as attributes
         and also displays the image ontop of the screen.
         """
+        py.init()
         self.xpos = xpos
         self.ypos = ypos
         self.buttonWidth = image.get_width()
         self.buttonHeight = image.get_height()
         self.image = image
 
-    def pressed(self):
+    def pressed(self,event):
         """ Uses inbuilt
          pygame method to check if 
         the left mouse button is being pressed down
         if it is being pressed it checks if the mouse is 
         hovering over the button if it is then it returns True
         """
-        if py.mouse.get_pressed()[0] == True:
+        if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
             if self.xpos < pos[0] < self.xpos + self.buttonWidth:
                 if self.ypos < pos[1] < self.ypos + self.buttonHeight:
