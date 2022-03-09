@@ -18,6 +18,7 @@ text_box_image_selected = py.image.load("resources/text_box_image_outline.png")
 
 background_title = py.image.load("resources/background_title.png")
 background_login = py.image.load("resources/background_login.png")
+background_lobby = py.image.load("resources/background_lobby.png")
 
 # Button size.
 caption = "Noughts and Crosses"

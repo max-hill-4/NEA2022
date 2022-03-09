@@ -25,7 +25,7 @@ class Login(object):
             self.next_state = "MENU"
 
         if self.button_confirm.pressed(event):
-            pass
+            self.next_state = "LOBBY"
 
         self.text_box_username.run(event)
 
