@@ -10,7 +10,7 @@ class Login(object):
         self.done = False
         self.next_state = None
 
-        self.text_box_username = tl.InputBox(50, 200)
+        self.text_box_username = tl.InputBox(80, 200)
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.button_confirm = tl.Button(cfg.button_confirm_image, 400, 200)
         self.object_list = (self.text_box_username, self.button_back,
