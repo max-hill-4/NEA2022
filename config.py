@@ -1,6 +1,8 @@
+import sys
+sys.path.append('E:\\modules')
 import pygame as py
-py.init()
 
+py.init()
 
 # Window size.
 width, height = 640, 480

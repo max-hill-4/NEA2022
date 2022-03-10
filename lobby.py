@@ -1,4 +1,5 @@
 import sys
+sys.path.append('E:\\modules')
 import pygame as py
 import tools as tl
 import config as cfg
@@ -24,7 +25,7 @@ class Lobby(object):
             sys.exit()
 
         if self.button_back.pressed(event):
-            self.next_state = "MENU"
+            self.next_state = "LOGIN"
 
         if self.button_confirm.pressed(event):
             pass
