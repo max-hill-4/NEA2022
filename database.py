@@ -2,6 +2,7 @@ import sys
 sys.path.append('E:\modules')
 import mysql.connector
 
+
 class Database:
     def __init__(self):
 
