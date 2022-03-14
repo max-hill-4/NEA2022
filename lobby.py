@@ -1,5 +1,3 @@
-import sys
-sys.path.append('E:\\modules')
 import pygame as py
 import tools as tl
 import config as cfg
@@ -27,7 +25,7 @@ class Lobby(object):
         if self.button_back.pressed(event):
             self.next_state = "LOGIN"
 
-        if self.button_confirm.pressed(event):
+        if self.button_create.pressed(event):
             self.next_state = "WAIT"
 
         self.text_box_lobbyID.run(event)

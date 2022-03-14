@@ -3,7 +3,7 @@ import config
 import menu
 import login
 import lobby
-
+import wait
 
 py.init()
 
@@ -13,7 +13,8 @@ window = py.display.set_mode((config.width, config.height))
 states = {
     "MENU": menu.Menu(),
     "LOGIN": login.Login(),
-    "LOBBY": lobby.Lobby()
+    "LOBBY": lobby.Lobby(),
+    "WAIT": wait.Wait()
 }
 
 

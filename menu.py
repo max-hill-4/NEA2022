@@ -1,6 +1,3 @@
-import sys
-sys.path.append('E:\\modules')
-
 import pygame as py
 import tools as tl
 import config as cfg

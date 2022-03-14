@@ -1,5 +1,3 @@
-import sys
-sys.path.append('E:\\modules')
 import pygame as py
 
 py.init()
@@ -21,6 +19,7 @@ text_box_image_selected = py.image.load("resources/text_box_image_outline.png")
 background_title = py.image.load("resources/background_title.png")
 background_login = py.image.load("resources/background_login.png")
 background_lobby = py.image.load("resources/background_lobby.png")
+background_wait = py.image.load("resources/background_wait.png")
 
 # Button size.
 caption = "Noughts and Crosses"
