@@ -23,6 +23,7 @@ class Menu(object):
             self.done = True
             sys.exit()
 
+
     def draw(self, window):
 
         window.blit(cfg.background_title, (0, 0))
