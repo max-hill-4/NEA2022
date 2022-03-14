@@ -1,0 +1,3 @@
+build server better in 'wait.py'
+fix for loops
+make pep8

@@ -11,6 +11,8 @@ class Wait(object):
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.run_server = run_server
         self.network = nt.Network()
+
+
     def get_event(self, event):
 
         if self.run_server:
