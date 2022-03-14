@@ -28,7 +28,7 @@ class Lobby(object):
             self.next_state = "LOGIN"
 
         if self.button_confirm.pressed(event):
-            pass
+            self.next_state = "WAIT"
 
         self.text_box_lobbyID.run(event)
 
