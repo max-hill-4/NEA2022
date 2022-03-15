@@ -24,6 +24,5 @@ class Menu(object):
     def draw(self, window):
 
         window.blit(cfg.background_title, (0, 0))
-
         for n in self.object_list:
             n.draw(window)
