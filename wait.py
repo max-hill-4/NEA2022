@@ -28,6 +28,7 @@ class Wait(object):
             self.next_state = "LOBBY"
 
         if self.server.connection:
+            cfg.socket_object = self.server.connection
             self.next_state = "GAMEPLAY"
 
     def draw(self, window):

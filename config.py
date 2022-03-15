@@ -5,6 +5,8 @@ py.init()
 # Window size.
 width, height = 640, 480
 
+socket_object = None
+
 # Pygame creates  hidden surface ready to be shown on screen.
 button_login_image = py.image.load("resources/button_login_image.png")
 

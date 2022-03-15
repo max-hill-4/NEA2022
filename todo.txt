@@ -1,12 +1,4 @@
 fix for loops
-
-
-
-pass data on game function
-
-design game
-
+i have scuffed socket objectpasas atm idk how to fix.
 relative pathing sort in folders
-
-
-input()
+crashed when added new database record
