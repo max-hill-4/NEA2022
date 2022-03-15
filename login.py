@@ -13,10 +13,12 @@ class Login(object):
         self.object_list = (self.text_box_username, self.button_back,
                             self.button_confirm)
 
+
     def get_event(self, event):
 
         if event.type == py.QUIT:
             self.done = True
+
 
         if self.button_back.pressed(event):
             self.next_state = "MENU"
