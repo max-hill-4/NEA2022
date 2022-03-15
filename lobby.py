@@ -1,14 +1,15 @@
 import pygame as py
 import tools as tl
 import config as cfg
-
-
+import threading as th
+import network as nt
 
 class Lobby(object):
     def __init__(self):
         self.done = False
         self.next_state = None
-
+        self.run_server = False
+        self.network = nt.Network()
         self.text_box_lobbyID = tl.InputBox(150, 300)
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.button_confirm = tl.Button(cfg.button_confirm_image, 400, 300)
@@ -21,12 +22,14 @@ class Lobby(object):
 
         if event.type == py.QUIT:
             self.done = True
-            sys.exit()
 
         if self.button_back.pressed(event):
             self.next_state = "LOGIN"
 
         if self.button_create.pressed(event):
+            self.network.build_server()
+            self.t = th.Thread(target=self.network.connection_attempt)
+            self.t.start()
             self.next_state = "WAIT"
 
 

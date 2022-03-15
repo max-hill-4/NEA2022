@@ -14,7 +14,7 @@ states = {
     "MENU": menu.Menu(),
     "LOGIN": login.Login(),
     "LOBBY": lobby.Lobby(),
-    "WAIT": wait.Wait(True)
+    "WAIT": wait.Wait()
 }
 
 

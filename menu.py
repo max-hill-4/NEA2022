@@ -14,7 +14,6 @@ class Menu(object):
     def get_event(self, event):
         if event.type == py.QUIT:
             self.done = True
-            sys.exit()
 
         if self.button_login.pressed(event):
             self.next_state = "LOGIN"
