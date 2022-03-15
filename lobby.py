@@ -2,6 +2,7 @@ import pygame as py
 import tools as tl
 import config as cfg
 
+
 class Lobby(object):
     def __init__(self):
         self.done = False
@@ -13,7 +14,6 @@ class Lobby(object):
         self.object_list = (self.text_box_lobbyID, self.button_back,
                             self.button_confirm, self.button_create)
 
-
     def get_event(self, event):
 
         if event.type == py.QUIT:
@@ -24,7 +24,6 @@ class Lobby(object):
 
         if self.button_create.pressed(event):
             self.next_state = "WAIT"
-
 
         self.text_box_lobbyID.run(event)
 

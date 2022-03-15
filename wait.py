@@ -4,6 +4,7 @@ import config as cfg
 from network import Build_Server as nt
 import threading as th
 
+
 class Wait(object):
     def __init__(self):
         self.done = False
@@ -20,7 +21,6 @@ class Wait(object):
             t = th.Thread(target=self.server.connection_attempt)
             t.start()
             self.server_running = True
-
 
         if self.button_back.pressed(event):
             self.server.close()

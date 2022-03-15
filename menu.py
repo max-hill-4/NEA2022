@@ -20,8 +20,6 @@ class Menu(object):
 
         if self.button_quit.pressed(event):
             self.done = True
-            sys.exit()
-
 
     def draw(self, window):
 
