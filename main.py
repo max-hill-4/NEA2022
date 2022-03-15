@@ -4,7 +4,7 @@ import menu
 import login
 import lobby
 import wait
-
+import gameplay
 py.init()
 
 
@@ -14,7 +14,9 @@ states = {
     "MENU": menu.Menu(),
     "LOGIN": login.Login(),
     "LOBBY": lobby.Lobby(),
-    "WAIT": wait.Wait()
+    "WAIT": wait.Wait(),
+    "GAMEPLAY": gameplay.Gameplay()
+
 }
 
 

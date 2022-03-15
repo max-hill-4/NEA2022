@@ -20,7 +20,7 @@ background_title = py.image.load("resources/background_title.png")
 background_login = py.image.load("resources/background_login.png")
 background_lobby = py.image.load("resources/background_lobby.png")
 background_wait = py.image.load("resources/background_wait.png")
-
+background_gameplay = py.image.load("resources/background_gameplay.png")
 # Button size.
 caption = "Noughts and Crosses"
 font = py.font.Font(None, 32)
