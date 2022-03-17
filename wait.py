@@ -21,6 +21,7 @@ class Wait(object):
         if not self.game_lobby:
             self.game_lobby = db.create_gamelobby()
             print(self.game_lobby)
+
         if not self.server_running:
             self.server = nt()
             t = th.Thread(target=self.server.connection_attempt)

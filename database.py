@@ -1,6 +1,7 @@
 import mysql.connector
 import random as rnd
 import string
+import config as cfg
 
 
 class Database:
@@ -31,27 +32,23 @@ class Database:
         self.mydb.commit()
         print(f'{username} deleted')
 
-    def add_data(self, username, score):
+    def add_data(self, table, first, second):
 
-        if self.check_data(username):
-            print("Username Taken")
-            return
-        sql = "INSERT INTO highscores (name, score) VALUES (%s, %s)"
-        val = (username, score)
+        sql = f"INSERT INTO {table} VALUES (%s, %s)"
+        val = (first, second)
         self.mycursor.execute(sql, val)
         self.mydb.commit()
-        print(f" '{username}' and '{score}' have been added")
+        print(f" '{first}' and '{second}' have been added")
 
 
 def create_gamelobby():
     id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
 
-    if Database.check_data(id):
-        Database.add_data(id)
-        return id
+    if not Database().check_data(id):
+        Database().add_data('Gamelobby', id, cfg.ip)
     else:
-        create_gamelobby()
+        pass
 
 
 if __name__ == '__main__':
-    print(Database().get_data())
+    create_gamelobby()
