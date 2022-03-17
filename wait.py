@@ -29,6 +29,7 @@ class Wait(object):
 
         if self.server.connection:
             cfg.socket_object = self.server.connection
+            cfg.user_image = cfg.cross
             self.next_state = "GAMEPLAY"
 
     def draw(self, window):
