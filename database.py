@@ -52,5 +52,6 @@ def create_gamelobby():
     else:
         create_gamelobby()
 
+
 if __name__ == '__main__':
     print(Database().get_data())
