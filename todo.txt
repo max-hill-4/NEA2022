@@ -7,3 +7,4 @@ add client connection database
 host selector
 make database maker better for like defualt score and stuff
 make database private somehow
+fix network singleton>]?
