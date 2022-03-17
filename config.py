@@ -31,7 +31,8 @@ background_gameplay = py.image.load("resources/background_gameplay.png")
 cross = py.image.load("resources/cross.png")
 nought = py.image.load("resources/nought.png")
 
-
-# Button size.
+# Caption string to get called
 caption = "Noughts and Crosses"
+
+# Init pygame font
 font = py.font.Font(None, 32)
