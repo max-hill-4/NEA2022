@@ -1,8 +1,9 @@
 import pygame as py
 import tools as tl
 import config as cfg
-from network import Build_Server as nt
 import threading as th
+import database as db
+from network import Build_Server as nt
 
 
 class Wait(object):
@@ -11,11 +12,15 @@ class Wait(object):
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.server_running = False
+        self.game_lobby = None
 
     def get_event(self, event):
         if event.type == py.QUIT:
             self.done = True
 
+        if not self.game_lobby:
+            self.game_lobby = db.create_gamelobby()
+            print(self.game_lobby)
         if not self.server_running:
             self.server = nt()
             t = th.Thread(target=self.server.connection_attempt)

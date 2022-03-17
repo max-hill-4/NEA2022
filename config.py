@@ -1,5 +1,5 @@
 import pygame as py
-
+import socket
 py.init()
 
 # Window size
@@ -8,7 +8,8 @@ width, height = 640, 480
 # Init Global Variables
 socket_object = None
 user_image = None
-
+port = 5555
+ip = socket.gethostbyname(socket.gethostname())
 # Button images
 button_login_image = py.image.load("resources/button_login_image.png")
 button_create_image = py.image.load("resources/button_create_image.png")

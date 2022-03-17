@@ -2,3 +2,8 @@ fix for loops
 i have scuffed socket objectpasas atm idk how to fix.
 relative pathing sort in folders
 crashed when added new database record
+create box checking
+add client connection database
+host selector
+make database maker better for like defualt score and stuff
+make database private somehow

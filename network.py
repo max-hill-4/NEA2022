@@ -1,4 +1,5 @@
 import socket
+import config as cfg
 
 
 class Build_Server():
@@ -8,7 +9,7 @@ class Build_Server():
         self.port = 5555
         self.connection = None
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.s.bind(('', self.port))
+        self.s.bind(('', cfg.port))
         self.s.listen(2)
         print(f'Server built on port: {self.port}.')
 
