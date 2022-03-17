@@ -25,7 +25,7 @@ def check_data(data):
                 return True
 
 
-def del_data(table,column , data):
+def del_data(table, column, data):
     sql = (f"DELETE FROM {table} WHERE {column} = '{data}' ")
     mycursor.execute(sql)
     mydb.commit()

@@ -1,8 +1,6 @@
 import pygame as py
 import tools as tl
 import config as cfg
-import database as db
-import socket
 
 
 class Lobby(object):
