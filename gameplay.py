@@ -13,7 +13,6 @@ class Gameplay(object):
         if event.type == py.QUIT:
             self.done = True
 
-        print(cfg.socket_object)
         if self.button_back.pressed(event):
             self.next_state = "MENU"
 
