@@ -48,6 +48,7 @@ class Game(object):
             self.update()
             self.draw()
             py.display.update()
+        py.quit()
         sys.exit()
 
 

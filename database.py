@@ -4,48 +4,49 @@ import string
 import config as cfg
 
 
-class Database:
-    def __init__(self):
+mydb = mysql.connector.connect(
+        host='database-1.c1ajdf2akg8w.eu-west-2.rds.amazonaws.com',
+        user='admin',
+        password="qwertyui",
+        database="test"
+        )
+mycursor = mydb.cursor()
 
-        self.mydb = mysql.connector.connect(
 
-            host='database-1.c1ajdf2akg8w.eu-west-2.rds.amazonaws.com',
-            user='admin',
-            password="qwertyui",
-            database="test"
-            )
-        self.mycursor = self.mydb.cursor()
+def get_data():
+    mycursor.execute("SELECT * FROM highscores")
+    return mycursor.fetchall()
 
-    def get_data(self):
-        self.mycursor.execute("SELECT * FROM highscores")
-        return self.mycursor.fetchall()
 
-    def check_data(self, data):
-        for row in self.get_data():
-            for record in row:
-                if record == data:
-                    return True
+def check_data(data):
+    for row in get_data():
+        for record in row:
+            if record == data:
+                return True
 
-    def del_data(self, username):
-        sql = (f"DELETE FROM highscores WHERE username = '{username}' ")
-        self.mycursor.execute(sql)
-        self.mydb.commit()
-        print(f'{username} deleted')
 
-    def add_data(self, table, first, second):
+def del_data(table,column , data):
+    sql = (f"DELETE FROM {table} WHERE {column} = '{data}' ")
+    mycursor.execute(sql)
+    mydb.commit()
+    print(f'{data} deleted')
 
-        sql = f"INSERT INTO {table} VALUES (%s, %s)"
-        val = (first, second)
-        self.mycursor.execute(sql, val)
-        self.mydb.commit()
-        print(f" '{first}' and '{second}' have been added")
+
+def add_data(table, first, second):
+
+    sql = f"INSERT INTO {table} VALUES (%s, %s)"
+    val = (first, second)
+    mycursor.execute(sql, val)
+    mydb.commit()
+    print(f" '{first}' and '{second}' have been added")
 
 
 def create_gamelobby():
     id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
 
-    if not Database().check_data(id):
-        Database().add_data('Gamelobby', id, cfg.ip)
+    if not check_data(id):
+        add_data('Gamelobby', id, cfg.ip)
+        return id
     else:
         pass
 

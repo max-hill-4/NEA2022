@@ -10,6 +10,7 @@ socket_object = None
 user_image = None
 port = 5555
 ip = socket.gethostbyname(socket.gethostname())
+
 # Button images
 button_login_image = py.image.load("resources/button_login_image.png")
 button_create_image = py.image.load("resources/button_create_image.png")

@@ -16,6 +16,7 @@ class Wait(object):
 
     def get_event(self, event):
         if event.type == py.QUIT:
+            self.server.close()
             self.done = True
 
         if not self.game_lobby:
@@ -29,6 +30,9 @@ class Wait(object):
             self.server_running = True
 
         if self.button_back.pressed(event):
+
+            db.del_data('Gamelobby', 'GamelobbyID', self.game_lobby)
+            self.game_lobby = None
             self.server.close()
             self.server_running = False
             self.next_state = "LOBBY"

@@ -1,8 +1,9 @@
 import pygame as py
 import tools as tl
 import config as cfg
-from database import Database as db
+import database as db
 import socket
+
 
 class Lobby(object):
     def __init__(self):
@@ -27,9 +28,7 @@ class Lobby(object):
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
-            if
-
-
+            pass
 
         self.text_box_lobbyID.run(event)
 
