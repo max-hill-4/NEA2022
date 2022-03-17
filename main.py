@@ -1,3 +1,4 @@
+import sys
 import pygame as py
 import config
 import menu
@@ -5,6 +6,7 @@ import login
 import lobby
 import wait
 import gameplay
+
 py.init()
 
 
@@ -46,6 +48,7 @@ class Game(object):
             self.update()
             self.draw()
             py.display.update()
+        sys.exit()
 
 
 game = Game(window, states, "MENU")
