@@ -2,3 +2,5 @@
 .vs/
 .git/
 __pycache__/
+mysql/
+pygame/
