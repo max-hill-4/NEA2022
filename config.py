@@ -6,7 +6,7 @@ py.init()
 width, height = 640, 480
 
 # Init Global Variables
-socket_object = None
+socket_object,client ,address = None, None, None
 user_image = None
 port = 5555
 ip = socket.gethostbyname(socket.gethostname())

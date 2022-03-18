@@ -3,7 +3,7 @@ import tools as tl
 import config as cfg
 import threading as th
 import database as db
-from network import Build_Server as nt
+import network as nt
 
 
 class Wait(object):
@@ -24,8 +24,8 @@ class Wait(object):
             print(self.game_lobby)
 
         if not self.server_running:
-            self.server = nt()
-            t = th.Thread(target=self.server.connection_attempt)
+            nt.build_server()
+            t = th.Thread(target=nt.connection_attempt)
             t.start()
             self.server_running = True
 
@@ -37,8 +37,7 @@ class Wait(object):
             self.server_running = False
             self.next_state = "LOBBY"
 
-        if self.server.connection:
-            cfg.socket_object = self.server.connection
+        if nt.connection_attempt():
             cfg.user_image = cfg.cross
             self.next_state = "GAMEPLAY"
 

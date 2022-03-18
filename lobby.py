@@ -1,8 +1,8 @@
 import pygame as py
 import tools as tl
 import config as cfg
-
-
+import database as db
+import network as nt
 class Lobby(object):
     def __init__(self):
         self.done = False
@@ -26,7 +26,8 @@ class Lobby(object):
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
-            pass
+            if db.check_data(self.text_box_lobbyID.text):
+                print('lobby is availbale')
 
         self.text_box_lobbyID.run(event)
 
