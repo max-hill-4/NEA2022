@@ -33,11 +33,11 @@ class Wait(object):
 
             db.del_data('Gamelobby', 'GamelobbyID', self.game_lobby)
             self.game_lobby = None
-            self.server.close()
+            nt.close()
             self.server_running = False
             self.next_state = "LOBBY"
 
-        if nt.connection_attempt():
+        if cfg.connection:
             cfg.user_image = cfg.cross
             self.next_state = "GAMEPLAY"
 
