@@ -1,10 +1,5 @@
-i have scuffed socket objectpasas atm idk how to fix.
 relative pathing sort in folders
 create box checking
-add client connection database
 host selector
-make database maker better for like defualt score and stuff
 make database private somehow
-fix network singleton>]?
-crashed once server started
-seperate textbox and button 
+seperate textbox and button
