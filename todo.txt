@@ -6,4 +6,5 @@ host selector
 make database maker better for like defualt score and stuff
 make database private somehow
 fix network singleton>]?
-crashed once server started 
+crashed once server started
+seperate textbox and button 

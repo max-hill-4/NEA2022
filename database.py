@@ -13,20 +13,23 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-def get_data():
-    mycursor.execute("SELECT * FROM highscores")
+def get_data(table, field, record, data):
+    mycursor.execute(f"SELECT {field} FROM {table} WHERE {record} = '{data}'")
     return mycursor.fetchall()
 
 
-def check_data(data):
-    for row in get_data():
+def check_data(table, data):
+    mycursor.execute(f"SELECT * FROM {table}")
+    table_data = mycursor.fetchall()
+
+    for row in table_data:
         for record in row:
             if record == data:
                 return True
 
 
-def del_data(table, column, data):
-    sql = (f"DELETE FROM {table} WHERE {column} = '{data}' ")
+def del_data(table, field, data):
+    sql = (f"DELETE FROM {table} WHERE {field} = '{data}'")
     mycursor.execute(sql)
     mydb.commit()
     print(f'{data} deleted')
@@ -44,12 +47,13 @@ def add_data(table, first, second):
 def create_gamelobby():
     id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
 
-    if not check_data(id):
+    if not check_data('Gamelobby', id):
         add_data('Gamelobby', id, cfg.ip)
         return id
     else:
+        # display error
         pass
 
 
 if __name__ == '__main__':
-    create_gamelobby()
+    get_data()

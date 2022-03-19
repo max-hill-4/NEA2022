@@ -3,7 +3,7 @@ import tools as tl
 import config as cfg
 
 
-class Gameplay(object):
+class Gameplay:
     def __init__(self):
         self.done = False
         self.next_state = None

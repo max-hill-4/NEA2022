@@ -1,4 +1,3 @@
-import sys
 import pygame as py
 import config
 import menu
@@ -8,8 +7,6 @@ import wait
 import gameplay
 
 py.init()
-
-
 window = py.display.set_mode((config.width, config.height))
 
 states = {
@@ -18,11 +15,10 @@ states = {
     "LOBBY": lobby.Lobby(),
     "WAIT": wait.Wait(),
     "GAMEPLAY": gameplay.Gameplay()
-
 }
 
 
-class Game(object):
+class Game:
     def __init__(self, window, states, start_state):
         self.window = window
         self.states = states
@@ -49,7 +45,6 @@ class Game(object):
             self.draw()
             py.display.update()
         py.quit()
-        sys.exit()
 
 
 game = Game(window, states, "MENU")

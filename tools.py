@@ -2,7 +2,7 @@ import pygame as py
 import config as cfg
 
 
-class InputBox(object):
+class InputBox:
     """Creates box with positional parameters
     to display what the user is typing on
     in window.

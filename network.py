@@ -17,5 +17,10 @@ def connection_attempt():
         print(f'{e} so socket has been closed.')
 
 
+def client_connect(ip):
+    cfg.socket_object = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    cfg.socket_object.connect((ip, cfg.port))
+
+
 def close():
     cfg.socket_object.close()

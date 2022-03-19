@@ -6,7 +6,7 @@ import database as db
 import network as nt
 
 
-class Wait(object):
+class Wait:
     def __init__(self):
         self.done = False
         self.next_state = None
@@ -16,7 +16,8 @@ class Wait(object):
 
     def get_event(self, event):
         if event.type == py.QUIT:
-            self.server.close()
+            db.del_data('Gamelobby', 'GamelobbyID', self.game_lobby)
+            nt.close()
             self.done = True
 
         if not self.game_lobby:
