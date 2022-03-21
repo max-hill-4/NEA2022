@@ -1,6 +1,5 @@
 relative pathing sort in folders
-create box checking
-host selector
+create box checking for gameplay
 make database private somehow
 seperate textbox and button
 add check data function in the database file sqlinjectioncheck
