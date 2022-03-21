@@ -3,3 +3,4 @@ create box checking
 host selector
 make database private somehow
 seperate textbox and button
+add check data function in the database file sqlinjectioncheck

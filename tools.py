@@ -60,7 +60,6 @@ class Button:
         """ Constructor method that sets parameters as attributes
         and also displays the image ontop of the screen.
         """
-        py.init()
         self.xpos = xpos
         self.ypos = ypos
         self.buttonWidth = image.get_width()
