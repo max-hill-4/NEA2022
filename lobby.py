@@ -12,7 +12,7 @@ class Lobby:
         self.text_box = tl.InputBox(150, 300)
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.button_confirm = tl.Button(cfg.button_confirm_image, 400, 300)
-        self.button_create = tl.Button(cfg.button_create_image, 250, 150)
+        self.button_create = tl.Button(cfg.button_create_image, 270, 150)
         self.object_list = (self.text_box, self.button_back,
                             self.button_confirm, self.button_create)
 
@@ -33,6 +33,7 @@ class Lobby:
                                  'GamelobbyID', self.text_box.text)
                 nt.client_connect(ip[0][0])
                 self.next_state = "GAMEPLAY"
+
         self.text_box.run(event)
 
     def draw(self, window):
