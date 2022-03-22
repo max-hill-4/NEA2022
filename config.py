@@ -5,11 +5,13 @@ py.init()
 # Window size
 width, height = 640, 480
 
-# Init Global Variables
+# Init network variables
 socket_object, connection, address = None, None, None
-user_image = None
 port = 5555
 ip = socket.gethostbyname(socket.gethostname())
+
+# Init gameboard varaibles
+gameboard_position = 175, 200
 
 # Button images
 button_login_image = py.image.load("resources/button_login_image.png")
@@ -22,7 +24,7 @@ button_confirm_image = py.image.load("resources/button_confirm_image.png")
 text_box_image = py.image.load("resources/text_box_image.png")
 text_box_image_selected = py.image.load("resources/text_box_image_outline.png")
 
-# Background Images
+# Background images
 background_title = py.image.load("resources/background_title.png")
 background_login = py.image.load("resources/background_login.png")
 background_lobby = py.image.load("resources/background_lobby.png")
@@ -32,7 +34,7 @@ background_gameplay = py.image.load("resources/background_gameplay.png")
 # Player images
 cross = py.image.load("resources/cross.png")
 nought = py.image.load("resources/nought.png")
-
+gameboard = py.image.load("resources/gameboard.png")
 # Caption string to get called
 caption = "Noughts and Crosses"
 

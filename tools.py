@@ -81,3 +81,11 @@ class Button:
 
     def draw(self, surface):
         surface.blit(self.image, (self.xpos, self.ypos))
+
+
+class Gameboard:
+    def __init__(self):
+        pass
+
+    def draw(self, surface):
+        surface.blit(cfg.gameboard, (cfg.gameboard_position))

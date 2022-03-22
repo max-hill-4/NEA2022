@@ -8,6 +8,7 @@ class Gameplay:
         self.done = False
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
+        self.gameboard = tl.Gameboard()
 
     def get_event(self, event):
         if event.type == py.QUIT:
@@ -19,4 +20,5 @@ class Gameplay:
     def draw(self, window):
 
         window.blit(cfg.background_gameplay, (0, 0))
+        self.gameboard.draw(window)
         self.button_back.draw(window)

@@ -3,3 +3,7 @@ make database private somehow
 seperate textbox and button
 add check data function in the database file sqlinjectioncheck
 have a pip install ?tf
+make good readme
+fullscreen button
+music maybe
+maybe make main inside of states and seperate ''start' file 

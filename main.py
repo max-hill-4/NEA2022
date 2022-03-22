@@ -1,10 +1,7 @@
 import pygame as py
 import config
-import states.menu
-import states.login
-import states.lobby
-import states.wait
-import states.gameplay
+import states
+
 py.init()
 window = py.display.set_mode((config.width, config.height))
 
