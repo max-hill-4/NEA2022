@@ -1,20 +1,19 @@
 import pygame as py
 import config
-import menu
-import login
-import lobby
-import wait
-import gameplay
-
+import states.menu
+import states.login
+import states.lobby
+import states.wait
+import states.gameplay
 py.init()
 window = py.display.set_mode((config.width, config.height))
 
 states = {
-    "MENU": menu.Menu(),
-    "LOGIN": login.Login(),
-    "LOBBY": lobby.Lobby(),
-    "WAIT": wait.Wait(),
-    "GAMEPLAY": gameplay.Gameplay()
+    "MENU": states.menu.Menu(),
+    "LOGIN": states.login.Login(),
+    "LOBBY": states.lobby.Lobby(),
+    "WAIT": states.wait.Wait(),
+    "GAMEPLAY": states.gameplay.Gameplay()
 }
 
 
