@@ -6,4 +6,6 @@ have a pip install ?tf
 make good readme
 fullscreen button
 music maybe
-maybe make main inside of states and seperate ''start' file 
+maybe make main inside of states and seperate ''start' file
+defo a way to auto add buyttins to object list
+bit scuffed loading buttons in init as it gets loads on import

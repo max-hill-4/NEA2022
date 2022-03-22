@@ -11,7 +11,9 @@ port = 5555
 ip = socket.gethostbyname(socket.gethostname())
 
 # Init gameboard varaibles
-gameboard_position = 175, 200
+gameboard_position = 175, 20
+gameboard_row = {'row_0': 180, 'row_1': 280, 'row_2': 380}
+gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
 
 # Button images
 button_login_image = py.image.load("resources/button_login_image.png")

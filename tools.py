@@ -75,6 +75,7 @@ class Button:
         """
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
+            print(pos)
             if self.xpos < pos[0] < self.xpos + self.buttonWidth:
                 if self.ypos < pos[1] < self.ypos + self.buttonHeight:
                     return True
@@ -85,7 +86,16 @@ class Button:
 
 class Gameboard:
     def __init__(self):
-        pass
+        self.object_list = {}
+
+        for x in cfg.gameboard_row:
+            for y in cfg.gameboard_column:
+                name = (x+y)
+                self.object_list[name] = Button(cfg.cross,
+                                                cfg.gameboard_row[x],
+                                                cfg.gameboard_column[y])
 
     def draw(self, surface):
         surface.blit(cfg.gameboard, (cfg.gameboard_position))
+        for n in self.object_list:
+            self.object_list[n].draw(surface)
