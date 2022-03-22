@@ -90,10 +90,9 @@ class Gameboard:
 
         for x in cfg.gameboard_row:
             for y in cfg.gameboard_column:
-                name = (x+y)
-                self.object_list[name] = Button(cfg.cross,
-                                                cfg.gameboard_row[x],
-                                                cfg.gameboard_column[y])
+                self.object_list[x+y] = Button(cfg.cross,
+                                               cfg.gameboard_row[x],
+                                               cfg.gameboard_column[y])
 
     def draw(self, surface):
         surface.blit(cfg.gameboard, (cfg.gameboard_position))
