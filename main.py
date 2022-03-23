@@ -2,6 +2,7 @@ import pygame as py
 import config
 import states
 
+#there has been a major change oh no!
 py.init()
 window = py.display.set_mode((config.width, config.height))
 
