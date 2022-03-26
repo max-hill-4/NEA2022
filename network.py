@@ -1,7 +1,7 @@
 import config as cfg
 import socket
 import pickle
-import string
+import string as st
 import random as rnd
 
 
@@ -14,24 +14,26 @@ except Exception:
     print('server not online!')
 
 
-def get_data():
-    data = pickle.dumps('get')
+def get_data(lobby_id):
+    data = pickle.dumps(lobby_id)
     s.send(data)
     recv = pickle.loads(s.recv(1024))
     return recv
 
 
-def check_data(data):
-    games = get_data()
-    for i, v in enumerate(games):
-        if v[0] == data:
-            return True
+def check_data(lobby_id):
+
+    games = get_data(lobby_id)
+    if games:
+        return True
+    else:
+        print(f'{lobby_id} not found')
 
 
-def write_data(lobby_id, P1, P2):
+def write_data(new_data):
     data = pickle.dumps('write')
     s.send(data)
-    data = pickle.dumps((lobby_id, P1, P2))
+    data = pickle.dumps((new_data))
     s.send(data)
     print(f'{pickle.loads(data)} has been sent')
 
@@ -41,13 +43,14 @@ def del_data(lobby_id):
     s.send(data)
     data = pickle.dumps(lobby_id)
     s.send(data)
-    print(f'{pickle.loads(data)} has been sent')
+    print(f'{pickle.loads(data)} has been deleted')
 
 
 def create_gamelobby():
-    id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
+    cfg.lobby = ''.join(rnd.choices(st.ascii_uppercase + st.digits, k=4))
 
     if check_data(id):
-        create_gamelobby()
-    else:
+        write_data(id)
         return id
+    else:
+        create_gamelobby()
