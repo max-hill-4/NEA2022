@@ -1,6 +1,8 @@
 import config as cfg
 import socket
 import pickle
+import string
+import random as rnd
 
 
 def connect():
@@ -13,11 +15,19 @@ def connect():
     except Exception:
         print('server not online!')
 
+
 def get_data():
     data = pickle.dumps('get')
     s.send(data)
     recv = pickle.loads(s.recv(1024))
-    print(list(recv))
+    return recv
+
+
+def check_data(data):
+    games = get_data()
+    for i, v in enumerate(games):
+        if v[0] == data:
+            return True
 
 
 def write_data(lobby_id, P1, P2):
@@ -36,19 +46,10 @@ def del_data(lobby_id):
     print(f'{pickle.loads(data)} has been sent')
 
 
-connect()
-while True:
+def create_gamelobby():
+    id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
 
-    x = input()
-    if x == 'g':
-        get_data()
-
-    if x == 'w':
-        lobby_id = input('lobby_id:')
-        P1 = input('P1:')
-        P2 = input('P2:')
-
-        write_data(lobby_id, P1, P2)
-    if x == 'd':
-        lobby_id = input('id to delete:')
-        del_data(lobby_id)
+    if check_data():
+        create_gamelobby()
+    else:
+        return id

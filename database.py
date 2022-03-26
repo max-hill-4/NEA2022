@@ -1,7 +1,4 @@
 import mysql.connector
-import random as rnd
-import string
-import config as cfg
 
 
 mydb = mysql.connector.connect(
@@ -42,17 +39,6 @@ def add_data(table, first, second):
     mycursor.execute(sql, val)
     mydb.commit()
     print(f" '{first}' and '{second}' have been added")
-
-
-def create_gamelobby():
-    id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
-
-    if not check_data('Gamelobby', id):
-        add_data('Gamelobby', id, cfg.ip)
-        return id
-    else:
-        # display error
-        pass
 
 
 if __name__ == '__main__':

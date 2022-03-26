@@ -13,3 +13,5 @@ when gameplay window is closed the sockert and gmaelobby needs to be deleted
 sql scheduler that has timestamp and after time period delete gamelobby from db
 / or if they have been waiting in a ' wait # window foir time period
 [BIG ELPROBLEMO OF PORT FORWARDING NONSESNE]
+change db server to oracle or soemthing
+clearout database creatlobby shtie

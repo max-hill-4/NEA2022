@@ -1,7 +1,6 @@
 import pygame as py
 import tools as tl
 import config as cfg
-import database as db
 import network as nt
 
 
@@ -10,8 +9,7 @@ class Wait:
         self.done = False
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
-        self.server_running = False
-        self.game_lobby = None
+        self.game_lobby = nt.create_gamelobby()
 
     def get_event(self, event):
         if event.type == py.QUIT:
@@ -19,7 +17,6 @@ class Wait:
 
         if self.button_back.pressed(event):
             self.next_state = "LOBBY"
-
 
     def draw(self, window):
 

@@ -1,5 +1,4 @@
 import pygame as py
-import socket
 py.init()
 
 # Window size
