@@ -75,7 +75,6 @@ class Button:
         """
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
-            print(pos)
             if self.xpos < pos[0] < self.xpos + self.buttonWidth:
                 if self.ypos < pos[1] < self.ypos + self.buttonHeight:
                     return True

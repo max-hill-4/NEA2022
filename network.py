@@ -5,15 +5,13 @@ import string
 import random as rnd
 
 
-def connect():
-    global s
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.connect((cfg.server, cfg.port))
-        print(f'connected to {cfg.server}')
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+try:
+    s.connect((cfg.server, cfg.port))
+    print(f'connected to {cfg.server}')
 
-    except Exception:
-        print('server not online!')
+except Exception:
+    print('server not online!')
 
 
 def get_data():
@@ -49,7 +47,7 @@ def del_data(lobby_id):
 def create_gamelobby():
     id = ''.join(rnd.choices(string.ascii_uppercase + string.digits, k=4))
 
-    if check_data():
+    if check_data(id):
         create_gamelobby()
     else:
         return id
