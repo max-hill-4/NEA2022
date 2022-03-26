@@ -13,9 +13,11 @@ class Wait:
 
     def get_event(self, event):
         if event.type == py.QUIT:
+            nt.del_data(self.game_lobby)
             self.done = True
 
         if self.button_back.pressed(event):
+            nt.del_data(self.game_lobby)
             self.next_state = "LOBBY"
 
     def draw(self, window):
