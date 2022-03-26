@@ -6,9 +6,8 @@ py.init()
 width, height = 640, 480
 
 # Init network variables
-socket_object, connection, address = None, None, None
-port = 5555
-ip = socket.gethostbyname(socket.gethostname())
+
+port, server = 5555, "141.147.118.101"
 
 # Init gameboard varaibles
 gameboard_position = 175, 20

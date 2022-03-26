@@ -1,8 +1,6 @@
 import pygame as py
 import tools as tl
 import config as cfg
-import database as db
-import network as nt
 
 
 class Lobby:
@@ -28,11 +26,7 @@ class Lobby:
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
-            if db.check_data('Gamelobby', self.text_box.text):
-                ip = db.get_data('Gamelobby', 'IP',
-                                 'GamelobbyID', self.text_box.text)
-                nt.client_connect(ip[0][0])
-                self.next_state = "GAMEPLAY"
+            self.next_state = "GAMEPLAY"
 
         self.text_box.run(event)
 
