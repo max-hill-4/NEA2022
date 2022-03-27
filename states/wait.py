@@ -9,27 +9,25 @@ class Wait:
         self.done = False
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
-        self.lobby_created = False
-        self.lobby_id = None
 
     def get_event(self, event):
         if event.type == py.QUIT:
-            # nt.del_lobby(self.lobby_id)
-            self.lobby_created = False
+            nt.del_lobby(cfg.lobby_id)
+            cfg.lobby_created = None
             self.done = True
 
-        if not self.lobby_created:
+        if not cfg.lobby_id:
             print('creating game lobby')
-            self.lobby_id = nt.lobby_code()
-            nt.add_lobby(self.lobby_id)
-            self.lobby_created = True
+            cfg.lobby_id = nt.lobby_code()
+            nt.add_lobby(cfg.lobby_id)
 
-        if nt.get_data(self.lobby_id)[0]:
+        if nt.get_data(cfg.lobby_id)[0]:
+            cfg.move = True
             self.next_state = "GAMEPLAY"
 
         if self.button_back.pressed(event):
-            # nt.del_data(self.lobby_id)
-            self.lobby_created = False
+            nt.del_lobby(cfg.lobby_id)
+            cfg.lobby_created = None
             self.next_state = "LOBBY"
 
     def draw(self, window):

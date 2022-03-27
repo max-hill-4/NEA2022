@@ -86,14 +86,16 @@ class Button:
 class Gameboard:
     def __init__(self):
         self.object_list = {}
-
+        self.draw_list = []
         for x in cfg.gameboard_row:
             for y in cfg.gameboard_column:
                 self.object_list[x+y] = Button(cfg.cross,
                                                cfg.gameboard_row[x],
                                                cfg.gameboard_column[y])
 
-    def draw(self, surface):
-        surface.blit(cfg.gameboard, (cfg.gameboard_position))
-        for n in self.object_list:
-            self.object_list[n].draw(surface)
+    def update(self, game_data):
+
+        for index, value in enumerate(game_data):
+            if value == 1:
+                print(list(self.object_list.values()))
+                self.draw_list.append(list(self.object_list.values())[index])

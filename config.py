@@ -12,7 +12,8 @@ port, server = 5555, "141.147.118.101"
 gameboard_position = 175, 20
 gameboard_row = {'row_0': 180, 'row_1': 280, 'row_2': 380}
 gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
-
+lobby_id = None
+move = None
 # Button images
 button_login_image = py.image.load("resources/button_login_image.png")
 button_create_image = py.image.load("resources/button_create_image.png")
