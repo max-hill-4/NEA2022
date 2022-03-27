@@ -19,3 +19,4 @@ stop using pickle;? for json or something
 i think singleton netowork worthit becuyase you can have self. gamelobby!!
 better way to make 4 digit code bro
 make server code look nice
+gui check if conneciton

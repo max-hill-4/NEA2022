@@ -24,9 +24,8 @@ class Wait:
             nt.add_lobby(self.lobby_id)
             self.lobby_created = True
 
-        print(nt.get_data(self.lobby_id)[0])
-        # if nt.get_data(self.lobby_id)[0]:
-        #     print('user connected!')
+        if nt.get_data(self.lobby_id)[0]:
+            self.next_state = "GAMEPLAY"
 
         if self.button_back.pressed(event):
             # nt.del_data(self.lobby_id)

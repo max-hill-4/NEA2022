@@ -27,6 +27,7 @@ class Lobby:
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
+            nt.update_lobby(self.text_box.text, 0, True)
             self.next_state = "GAMEPLAY"
 
         self.text_box.run(event)
