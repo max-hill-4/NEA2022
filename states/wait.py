@@ -13,19 +13,21 @@ class Wait:
 
     def get_event(self, event):
         if event.type == py.QUIT:
-            nt.del_data(self.game_lobby)
+            nt.del_data(self.lobby_id)
+            self.lobby_created = False
             self.done = True
 
         if not self.lobby_created:
-            self.lobby_id = nt.create_gamelobby()
+            self.lobby_id = ''.join(rnd.choices(st.ascii_uppercase + st.digits, k=4))
+            # update_lobby
             self.lobby_created = True
 
-
-        if nt.get_data(self.game_lobby)[2]:
-            print(nt.get_data(self.game_lobby))
+        if nt.get_data(self.lobby_id)[2]:
+            print(nt.get_data(self.lobby_id))
 
         if self.button_back.pressed(event):
-            nt.del_data(self.game_lobby)
+            nt.del_data(self.lobby_id)
+            self.lobby_created = False
             self.next_state = "LOBBY"
 
     def draw(self, window):

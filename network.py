@@ -1,8 +1,6 @@
 import config as cfg
 import socket
 import pickle
-import string as st
-import random as rnd
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -10,47 +8,32 @@ try:
     s.connect((cfg.server, cfg.port))
     print(f'connected to {cfg.server}')
 
-except Exception:
-    print('server not online!')
+except Exception as e:
+    print(e)
 
 
+# sends get function, recieves gamelobby's data
 def get_data(lobby_id):
-    data = pickle.dumps(lobby_id)
+    data = pickle.dumps(('get', lobby_id))
     s.send(data)
     recv = pickle.loads(s.recv(1024))
     return recv
+    print(f'{recv} recieved')
 
 
-def check_data(lobby_id):
-
-    games = get_data(lobby_id)
-    if games:
-        return True
-    else:
-        print(f'{lobby_id} not found')
-
-
-def write_data(new_data):
-    data = pickle.dumps('write')
+def update_lobby(lobby_id, index, value):
+    data = pickle.dumps(('update', (lobby_id, index, value)))
     s.send(data)
-    data = pickle.dumps((new_data))
+    print(f'{pickle.loads(data)[1]} has been sent')
+
+
+def del_lobby(lobby_id):
+    data = pickle.dumps(('delete', lobby_id))
     s.send(data)
-    print(f'{pickle.loads(data)} has been sent')
+    print(f'{pickle.loads(data)[1]} has been deleted')
 
 
-def del_data(lobby_id):
-    data = pickle.dumps('delete')
+def add_lobby(lobby_id):
+    data = pickle.dumps(('add', lobby_id))
     s.send(data)
-    data = pickle.dumps(lobby_id)
-    s.send(data)
-    print(f'{pickle.loads(data)} has been deleted')
-
-
-def create_gamelobby():
-    cfg.lobby = ''.join(rnd.choices(st.ascii_uppercase + st.digits, k=4))
-
-    if check_data(id):
-        write_data(id)
-        return id
-    else:
-        create_gamelobby()
+    print(f'{pickle.loads(data)[1]} has been added')
