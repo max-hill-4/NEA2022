@@ -1,7 +1,8 @@
 import config as cfg
 import socket
 import pickle
-
+import random as rnd
+import string as st
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
@@ -37,3 +38,14 @@ def add_lobby(lobby_id):
     data = pickle.dumps(('add', lobby_id))
     s.send(data)
     print(f'{pickle.loads(data)[1]} has been added')
+
+
+def lobby_code():
+    code = ''.join(rnd.choices(st.ascii_uppercase + st.digits, k=4))
+    print(code)
+    if get_data(code):
+        print(code, 'found')
+        lobby_code()
+    else:
+        print('valid lobby!!')
+        return code

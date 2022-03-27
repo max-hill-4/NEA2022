@@ -10,23 +10,26 @@ class Wait:
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.lobby_created = False
+        self.lobby_id = None
 
     def get_event(self, event):
         if event.type == py.QUIT:
-            nt.del_data(self.lobby_id)
+            # nt.del_lobby(self.lobby_id)
             self.lobby_created = False
             self.done = True
 
         if not self.lobby_created:
-            self.lobby_id = ''.join(rnd.choices(st.ascii_uppercase + st.digits, k=4))
-            # update_lobby
+            print('creating game lobby')
+            self.lobby_id = nt.lobby_code()
+            nt.add_lobby(self.lobby_id)
             self.lobby_created = True
 
-        if nt.get_data(self.lobby_id)[2]:
-            print(nt.get_data(self.lobby_id))
+        print(nt.get_data(self.lobby_id)[0])
+        # if nt.get_data(self.lobby_id)[0]:
+        #     print('user connected!')
 
         if self.button_back.pressed(event):
-            nt.del_data(self.lobby_id)
+            # nt.del_data(self.lobby_id)
             self.lobby_created = False
             self.next_state = "LOBBY"
 
