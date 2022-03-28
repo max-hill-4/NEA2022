@@ -26,6 +26,9 @@ class Gameplay:
                 nt.update_lobby(cfg.lobby_id, 1, data)
                 cfg.move = False
 
+        if tl.is_win(nt.get_data(cfg.lobby_id)[1], cfg.cross_wins):
+            print('cross wins!')
+
     def draw(self, window):
 
         window.blit(cfg.background_gameplay, (0, 0))

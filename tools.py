@@ -12,9 +12,9 @@ class InputBox:
 
         self.xpos = xpos
         self.ypos = ypos
-        self.text_box_width = cfg.text_box_image.get_width()
-        self.text_box_height = cfg.text_box_image.get_height()
-        self.image = cfg.text_box_image
+        self.text_box_width = cfg.text_box.get_width()
+        self.text_box_height = cfg.text_box.get_height()
+        self.image = cfg.text_box
         self.selected = False
         self.text = ''
         self.hidden = hidden
@@ -27,11 +27,11 @@ class InputBox:
             if (self.xpos < pos[0] < self.xpos + self.text_box_width and
                     self.ypos < pos[1] < self.ypos + self.text_box_height):
                 self.selected = True
-                self.image = cfg.text_box_image_selected
+                self.image = cfg.text_box_image
 
             else:
                 self.selected = False
-                self.image = cfg.text_box_image
+                self.image = cfg.text_box
 
         if self.selected:
             if event.type == py.KEYDOWN:
@@ -43,11 +43,11 @@ class InputBox:
 
     def draw(self, surface):
         surface.blit(self.image, (self.xpos, self.ypos))
-        textSurface = cfg.font.render(self.text, True, (0, 0, 0))
+        text_surface = cfg.font.render(self.text, True, (0, 0, 0))
         if self.hidden:
-            textSurface = cfg.font.render(len(self.text)*'*', True, (0, 0, 0))
+            text_surface = cfg.font.render(len(self.text)*'*', True, (0, 0, 0))
 
-        surface.blit(textSurface, (self.xpos + 10, self.ypos + 10))
+        surface.blit(text_surface, (self.xpos + 10, self.ypos + 10))
 
 
 class Button:
@@ -97,5 +97,15 @@ class Gameboard:
 
         for index, value in enumerate(game_data):
             if value == 1:
-                print(list(self.object_list.values()))
+                # /print(list(self.object_list.values()))
                 self.draw_list.append(list(self.object_list.values())[index])
+
+
+def is_win(game_data, possible_wins):
+    for win in possible_wins:
+        count = 0
+        for index, data in enumerate(win):
+            if data == game_data[index] and data != 0:
+                count += 1
+            if count == 3:
+                return True
