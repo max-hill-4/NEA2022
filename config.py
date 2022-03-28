@@ -2,8 +2,9 @@ import pygame as py
 py.init()
 
 # Window size
-width, height = 640, 480
 
+width, height = 640, 480
+window = py.display.set_mode((width, height))
 # Init network variables
 
 port, server = 5555, "141.147.118.101"
@@ -30,27 +31,27 @@ cross_wins = [
 nought_wins = [tuple(2 if y else 0 for y in x) for x in cross_wins]
 
 # Button images
-button_login_image = py.image.load("resources/button_login.png").convert()
-button_create_image = py.image.load("resources/button_create.png").convert()
-button_quit_image = py.image.load("resources/button_quit.png").convert()
-button_back_image = py.image.load("resources/button_back.png").convert()
-button_confirm_image = py.image.load("resources/button_confirm.png").convert()
+button_login_image = py.image.load("data/button_login.png").convert_alpha()
+button_create_image = py.image.load("data/button_create.png").convert_alpha()
+button_quit_image = py.image.load("data/button_quit.png").convert_alpha()
+button_back_image = py.image.load("data/button_back.png").convert_alpha()
+button_confirm_image = py.image.load("data/button_confirm.png").convert_alpha()
 
 # Text box images
-text_box = py.image.load("resources/text_box.png").convert()
-text_box_selected = py.image.load("resources/text_box_outline.png").convert()
+text_box = py.image.load("data/text_box.png").convert_alpha()
+text_box_selected = py.image.load("data/text_box_outline.png").convert_alpha()
 
 # Background images
-background_title = py.image.load("resources/background_title.png").convert()
-background_login = py.image.load("resources/background_login.png").convert()
-background_lobby = py.image.load("resources/background_lobby.png").convert()
-background_wait = py.image.load("resources/background_wait.png").convert()
-background_gameplay = py.image.load("resources/background_game.png").convert()
+background_title = py.image.load("data/background_title.png").convert_alpha()
+background_login = py.image.load("data/background_login.png").convert_alpha()
+background_lobby = py.image.load("data/background_lobby.png").convert_alpha()
+background_wait = py.image.load("data/background_wait.png").convert_alpha()
+background_gameplay = py.image.load("data/background_game.png").convert_alpha()
 
 # Player images
-cross = py.image.load("resources/cross.png").convert()
-nought = py.image.load("resources/nought.png").convert()
-gameboard = py.image.load("resources/gameboard.png").convert()
+cross = py.image.load("data/cross.png").convert_alpha()
+nought = py.image.load("data/nought.png").convert_alpha()
+gameboard = py.image.load("data/gameboard.png").convert_alpha()
 # Caption string to get called
 caption = "Noughts and Crosses"
 

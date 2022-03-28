@@ -1,10 +1,9 @@
 import pygame as py
-import config
+import config as cfg
 import states
 
 # there has been a major change oh no!
 py.init()
-window = py.display.set_mode((config.width, config.height))
 
 states = {
     "MENU": states.menu.Menu(),
@@ -44,5 +43,5 @@ class Game:
         py.quit()
 
 
-game = Game(window, states, "MENU")
+game = Game(cfg.window, states, "MENU")
 game.run()
