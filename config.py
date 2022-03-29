@@ -14,7 +14,7 @@ gameboard_position = 175, 20
 gameboard_row = {'row_0': 180, 'row_1': 280, 'row_2': 380}
 gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
 lobby_id = None
-move = None
+player = 1
 cross_wins = [
     (1, 1, 1, 0, 0, 0, 0, 0, 0),
     (0, 0, 0, 1, 1, 1, 0, 0, 0),
@@ -52,8 +52,11 @@ background_gameplay = py.image.load("data/background_game.png").convert_alpha()
 cross = py.image.load("data/cross.png").convert_alpha()
 nought = py.image.load("data/nought.png").convert_alpha()
 gameboard = py.image.load("data/gameboard.png").convert_alpha()
+blank = py.image.load("data/blank.png").convert_alpha()
 # Caption string to get called
 caption = "Noughts and Crosses"
+# sizes of buttons
+text_box_width, text_box_height = text_box.get_width(), text_box.get_height()
 
 # Init pygame font
 font = py.font.Font(None, 32)

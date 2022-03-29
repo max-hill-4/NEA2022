@@ -12,8 +12,6 @@ class InputBox:
 
         self.xpos = xpos
         self.ypos = ypos
-        self.text_box_width = cfg.text_box.get_width()
-        self.text_box_height = cfg.text_box.get_height()
         self.image = cfg.text_box
         self.selected = False
         self.text = ''
@@ -24,10 +22,10 @@ class InputBox:
         """
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
-            if (self.xpos < pos[0] < self.xpos + self.text_box_width and
-                    self.ypos < pos[1] < self.ypos + self.text_box_height):
+            if (self.xpos < pos[0] < self.xpos + cfg.text_box_width and
+                    self.ypos < pos[1] < self.ypos + cfg.text_box_height):
                 self.selected = True
-                self.image = cfg.text_box_image
+                self.image = cfg.text_box_selected
 
             else:
                 self.selected = False
@@ -86,19 +84,24 @@ class Button:
 class Gameboard:
     def __init__(self):
         self.object_list = {}
+        self.object_list_values = list(self.object_list.values())
         self.draw_list = []
         for x in cfg.gameboard_row:
             for y in cfg.gameboard_column:
-                self.object_list[x+y] = Button(cfg.cross,
+                self.object_list[x+y] = Button(cfg.blank,
                                                cfg.gameboard_row[x],
                                                cfg.gameboard_column[y])
+        self.object_list_values = list(self.object_list.values())
 
     def update(self, game_data):
 
         for index, value in enumerate(game_data):
             if value == 1:
-                # /print(list(self.object_list.values()))
-                self.draw_list.append(list(self.object_list.values())[index])
+                self.draw_list.append(self.object_list_values[index])
+                self.draw_list[-1].image = cfg.cross
+            if value == 2:
+                self.draw_list.append(self.object_list_values[index])
+                self.draw_list[-1].image = cfg.nought
 
 
 def is_win(game_data, possible_wins):

@@ -27,10 +27,13 @@ class Lobby:
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
-            nt.update_lobby(self.text_box.text, 0, True)
-            cfg.lobby_id = self.text_box.text
-            cfg.move = False
-            self.next_state = "GAMEPLAY"
+            if nt.get_data(self.text_box.text):
+                nt.update_lobby(self.text_box.text, 1, True)
+                cfg.lobby_id = self.text_box.text
+                cfg.player = 2
+                self.next_state = "GAMEPLAY"
+            else:
+                print('no lobby found')
 
         self.text_box.run(event)
 

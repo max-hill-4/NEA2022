@@ -12,22 +12,30 @@ class Gameplay:
         self.gameboard = tl.Gameboard()
 
     def get_event(self, event):
+
+        game_data = nt.get_data(cfg.lobby_id)
+
         if event.type == py.QUIT:
             self.done = True
 
         if self.button_back.pressed(event):
             self.next_state = "MENU"
 
-        for index, data in enumerate(self.gameboard.object_list):
-            # if cfg.move:
-            if self.gameboard.object_list[data].pressed(event):
-                data = nt.get_data(cfg.lobby_id)[1]
-                data[index] = 1
-                nt.update_lobby(cfg.lobby_id, 1, data)
-                cfg.move = False
+        if game_data[0] == cfg.player:
+            for index, data in enumerate(self.gameboard.object_list):
+                if self.gameboard.object_list[data].pressed(event):
+                    game_data[2][index] = cfg.player
+                    nt.update_lobby(cfg.lobby_id, 2, game_data[2])
+                    move = 2 if cfg.player == 1 else 1
+                    nt.update_lobby(cfg.lobby_id, 0, move)
+                    cfg.move = False
 
-        if tl.is_win(nt.get_data(cfg.lobby_id)[1], cfg.cross_wins):
+        self.gameboard.update(game_data[2])
+        if tl.is_win(game_data[2], cfg.cross_wins):
             print('cross wins!')
+
+        if tl.is_win(game_data[2], cfg.nought_wins):
+            print('nought wins!')
 
     def draw(self, window):
 
@@ -37,5 +45,4 @@ class Gameplay:
             n.draw(window)
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
-        self.gameboard.update(nt.get_data(cfg.lobby_id)[1])
         self.button_back.draw(window)
