@@ -15,8 +15,7 @@ states = {
 
 
 class Game:
-    def __init__(self, window, states, start_state):
-        self.window = window
+    def __init__(self, states, start_state):
         self.states = states
         self.state = self.states[start_state]
 
@@ -32,9 +31,10 @@ class Game:
             self.state = self.states[change_state]
 
     def draw(self):
-        self.state.draw(self.window)
+        self.state.state_draw(cfg.window)
 
     def run(self):
+        py.time.Clock().tick(60)
         while not self.state.done:
             self.event_loop()
             self.update()
@@ -43,5 +43,5 @@ class Game:
         py.quit()
 
 
-game = Game(cfg.window, states, "MENU")
+game = Game(states, "MENU")
 game.run()

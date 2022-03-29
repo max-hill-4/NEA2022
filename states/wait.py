@@ -30,7 +30,7 @@ class Wait:
             cfg.lobby_created = None
             self.next_state = "LOBBY"
 
-    def draw(self, window):
+    def state_draw(self, window):
 
         window.blit(cfg.background_wait, (0, 0))
         self.button_back.draw(window)

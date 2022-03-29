@@ -21,7 +21,7 @@ class Menu:
         if self.button_quit.pressed(event):
             self.done = True
 
-    def draw(self, window):
+    def state_draw(self, window):
 
         window.blit(cfg.background_title, (0, 0))
         for n in self.object_list:

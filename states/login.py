@@ -33,7 +33,7 @@ class Login:
 
         self.text_box.run(event)
 
-    def draw(self, window):
+    def state_draw(self, window):
 
         window.blit(cfg.background_login, (0, 0))
 
