@@ -2,7 +2,7 @@ import pygame as py
 import config as cfg
 import states
 
-# there has been a major change oh no!
+# there has been a major change oh no!!!!
 py.init()
 
 states = {
@@ -36,6 +36,7 @@ class Game:
     def run(self):
         py.time.Clock().tick(60)
         while not self.state.done:
+            py.time.Clock().tick(10)
             self.event_loop()
             self.update()
             self.draw()

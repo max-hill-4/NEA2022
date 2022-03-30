@@ -19,15 +19,14 @@ class Wait:
         if not cfg.lobby_id:
             print('creating game lobby')
             cfg.lobby_id = nt.lobby_code()
-            nt.add_lobby(cfg.lobby_id)
+            nt.create_lobby(cfg.lobby_id)
 
-        if nt.get_data(cfg.lobby_id)[1]:
-            cfg.move = True
+        print('checking if there has been a connection')
+        if cfg.game_data[1]:
             self.next_state = "GAMEPLAY"
 
         if self.button_back.pressed(event):
             nt.del_lobby(cfg.lobby_id)
-            cfg.lobby_created = None
             self.next_state = "LOBBY"
 
     def state_draw(self, window):

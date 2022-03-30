@@ -14,6 +14,7 @@ gameboard_position = 175, 20
 gameboard_row = {'row_0': 180, 'row_1': 280, 'row_2': 380}
 gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
 lobby_id = None
+game_data = None
 player = 1
 cross_wins = [
     (1, 1, 1, 0, 0, 0, 0, 0, 0),
