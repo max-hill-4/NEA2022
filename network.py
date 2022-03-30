@@ -17,9 +17,11 @@ except Exception as e:
 def get_data(lobby_id):
     data = pickle.dumps(('get', lobby_id))
     s.send(data)
+    print('waiting for response from server!!!!')
     recv = pickle.loads(s.recv(1024))
-    return recv
     print(f'{recv} recieved')
+    return recv
+    
 
 
 def update_lobby(lobby_id, index, value):

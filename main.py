@@ -2,7 +2,7 @@ import pygame as py
 import config as cfg
 import states
 
-# there has been a major change oh no!
+# there has been a major change oh no!!!!
 py.init()
 
 states = {
