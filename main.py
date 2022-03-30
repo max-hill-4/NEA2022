@@ -36,6 +36,7 @@ class Game:
 
     def run(self):
         while not self.state.done:
+            py.time.Clocl().tick(10)
             self.event_loop()
             self.update()
             self.draw()

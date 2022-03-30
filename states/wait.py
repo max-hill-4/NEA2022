@@ -27,7 +27,6 @@ class Wait:
 
         if self.button_back.pressed(event):
             nt.del_lobby(cfg.lobby_id)
-            cfg.lobby_created = None
             self.next_state = "LOBBY"
 
     def draw(self, window):
