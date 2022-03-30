@@ -4,13 +4,19 @@ import pickle
 import random as rnd
 import string as st
 import time
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-try:
-    s.connect((cfg.server, cfg.port))
-    print(f'connected to {cfg.server}')
 
-except Exception as e:
-    print(e)
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+port, server = 5555, "141.147.118.101"
+
+def connect_server(game_lobby)
+    try:
+        s.connect((server, port))
+        print(f'connected to {server}')
+        s.send(game_lobby)
+
+    except Exception as e:
+        print(e)
 
 
 def get_data():

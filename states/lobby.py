@@ -26,6 +26,7 @@ class Lobby:
 
         if self.button_create.pressed(event):
             cfg.lobby_id = nt.lobby_code()
+            nt.connect_server(cfg.lobby_id)
             nt.create_lobby(cfg.lobby_id)
 
             t = th.Thread(target=nt.get_data)
@@ -33,6 +34,7 @@ class Lobby:
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
+            nt.connect_server(cfg.lobby_id)
             if nt.check_data(self.text_box.text):
                 nt.update_lobby(self.text_box.text, 1, True)
                 cfg.lobby_id = self.text_box.text

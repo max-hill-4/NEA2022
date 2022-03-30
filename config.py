@@ -5,9 +5,6 @@ py.init()
 
 width, height = 640, 480
 window = py.display.set_mode((width, height))
-# Init network variables
-
-port, server = 5555, "141.147.118.101"
 
 # Init gameboard varaibles
 gameboard_position = 175, 20
