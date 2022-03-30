@@ -20,10 +20,11 @@ class Wait:
             print('creating game lobby')
             cfg.lobby_id = nt.lobby_code()
             nt.create_lobby(cfg.lobby_id)
+            print('checking if there has been a connection')
 
-        print('checking if there has been a connection')
-        if cfg.game_data[1]:
-            self.next_state = "GAMEPLAY"
+        if cfg.game_data:
+            if cfg.game_data[1]:
+                self.next_state = "GAMEPLAY"
 
         if self.button_back.pressed(event):
             nt.del_lobby(cfg.lobby_id)

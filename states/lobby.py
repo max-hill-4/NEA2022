@@ -27,6 +27,7 @@ class Lobby:
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
+            print(self.text_box.text)
             if nt.check_data(self.text_box.text):
                 nt.update_lobby(self.text_box.text, 1, True)
                 cfg.lobby_id = self.text_box.text

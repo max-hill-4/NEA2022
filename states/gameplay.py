@@ -13,7 +13,6 @@ class Gameplay:
 
     def get_event(self, event):
 
-        game_data = nt.get_data(cfg.lobby_id)
         print('finished getting data!')
 
         if event.type == py.QUIT:
@@ -22,20 +21,20 @@ class Gameplay:
         if self.button_back.pressed(event):
             self.next_state = "MENU"
 
-        if game_data[0] == cfg.player:
+        if cfg.game_data[0] == cfg.player:
             for index, data in enumerate(self.gameboard.object_list):
                 if self.gameboard.object_list[data].pressed(event):
-                    game_data[2][index] = cfg.player
-                    nt.update_lobby(cfg.lobby_id, 2, game_data[2])
+                    cfg.game_data[2][index] = cfg.player
+                    nt.update_lobby(cfg.lobby_id, 2, cfg.game_data[2])
                     move = 2 if cfg.player == 1 else 1
                     nt.update_lobby(cfg.lobby_id, 0, move)
 
-        self.gameboard.update(game_data[2])
+        self.gameboard.update(cfg.game_data[2])
         print(' end of get event loop !')
-        if tl.is_win(game_data[2], cfg.cross_wins):
+        if tl.is_win(cfg.game_data[2], cfg.cross_wins):
             print('cross wins!')
 
-        if tl.is_win(game_data[2], cfg.nought_wins):
+        if tl.is_win(cfg.game_data[2], cfg.nought_wins):
             print('nought wins!')
 
     def state_draw(self, window):

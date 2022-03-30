@@ -34,7 +34,6 @@ class Game:
         self.state.state_draw(cfg.window)
 
     def run(self):
-        py.time.Clock().tick(60)
         while not self.state.done:
             py.time.Clock().tick(10)
             self.event_loop()
