@@ -13,16 +13,14 @@ except Exception as e:
     print(e)
 
 
-# sends get function, recieves gamelobby's data
 def get_data():
     while True:
-        time.sleep(1)
         data = pickle.dumps(('get', cfg.lobby_id))
         s.send(data)
-        print('waiting for response from server!!!!')
-        recv = pickle.loads(s.recv(1024))
-        print(f'{recv} recieved')
-        cfg.game_data = recv
+        data = pickle.loads(s.recv(1024))
+        print(f'{cfg.game_data} recieved')
+        cfg.game_data = data
+        time.sleep(1)
 
 
 def check_data(game_lobby):
@@ -52,7 +50,6 @@ def create_lobby(lobby_id):
     data = pickle.dumps(('add', lobby_id))
     s.send(data)
     print(f'{pickle.loads(data)[1]} has been added')
-
 
 
 def lobby_code():

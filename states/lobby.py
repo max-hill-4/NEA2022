@@ -2,6 +2,7 @@ import pygame as py
 import tools as tl
 import config as cfg
 import network as nt
+import threading as th
 
 
 class Lobby:
@@ -24,15 +25,24 @@ class Lobby:
             self.next_state = "LOGIN"
 
         if self.button_create.pressed(event):
+            cfg.lobby_id = nt.lobby_code()
+            nt.create_lobby(cfg.lobby_id)
+
+            t = th.Thread(target=nt.get_data)
+            t.start()
             self.next_state = "WAIT"
 
         if self.button_confirm.pressed(event):
-            print(self.text_box.text)
             if nt.check_data(self.text_box.text):
                 nt.update_lobby(self.text_box.text, 1, True)
                 cfg.lobby_id = self.text_box.text
+
+                t = th.Thread(target=nt.get_data)
+                t.start()
+
                 cfg.player = 2
                 self.next_state = "GAMEPLAY"
+
             else:
                 print('no lobby found')
 

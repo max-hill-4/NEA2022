@@ -13,8 +13,6 @@ class Gameplay:
 
     def get_event(self, event):
 
-        print('finished getting data!')
-
         if event.type == py.QUIT:
             self.done = True
 
@@ -30,7 +28,6 @@ class Gameplay:
                     nt.update_lobby(cfg.lobby_id, 0, move)
 
         self.gameboard.update(cfg.game_data[2])
-        print(' end of get event loop !')
         if tl.is_win(cfg.game_data[2], cfg.cross_wins):
             print('cross wins!')
 
@@ -46,4 +43,3 @@ class Gameplay:
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
         self.button_back.draw(window)
-        print(' i have drawn all stuff to the screen :)')
