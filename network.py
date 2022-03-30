@@ -7,22 +7,26 @@ import time
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-port, server = 5555, "141.147.118.101"
+port, server = 31654, "141.147.118.101"
 
-def connect_server(game_lobby)
+
+def connect_server(game_lobby):
     try:
         s.connect((server, port))
-        print(f'connected to {server}')
-        s.send(game_lobby)
+        data = pickle.dumps((game_lobby))
+        s.send(data)
 
     except Exception as e:
         print(e)
 
 
 def get_data():
+
     while True:
+        print('get data started!')
         data = pickle.dumps(('get', cfg.lobby_id))
         s.send(data)
+        print('i have sent get request and im waiting for a response.')
         data = pickle.loads(s.recv(1024))
         print(f'{cfg.game_data} recieved')
         cfg.game_data = data
@@ -60,10 +64,4 @@ def create_lobby(lobby_id):
 
 def lobby_code():
     code = ''.join(rnd.choices(st.ascii_uppercase + st.digits, k=4))
-    print(code)
-    if check_data(code):
-        print(code, 'found')
-        lobby_code()
-    else:
-        print('valid lobby!!')
-        return code
+    return code

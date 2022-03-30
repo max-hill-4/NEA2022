@@ -1,7 +1,6 @@
 import pygame as py
 import tools as tl
 import config as cfg
-import network as nt
 
 
 class Wait:
@@ -12,15 +11,12 @@ class Wait:
 
     def get_event(self, event):
         if event.type == py.QUIT:
-            nt.del_lobby(cfg.lobby_id)
-            cfg.lobby_created = None
             self.done = True
 
         if cfg.game_data[1]:
             self.next_state = "GAMEPLAY"
 
         if self.button_back.pressed(event):
-            nt.del_lobby(cfg.lobby_id)
             self.next_state = "LOBBY"
 
     def state_draw(self, window):

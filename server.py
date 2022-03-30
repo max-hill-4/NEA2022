@@ -6,7 +6,7 @@ games = {'ABCD': [True, False, None]}
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = '10.0.0.252'
-port = 5555
+port = 31654
 
 s.bind((host, port))
 s.listen(10)
@@ -15,14 +15,16 @@ print(f'server on {host} listening to {port}')
 
 def new_conection(clientsocket, addr):
     print(f'new thread created! connection from {addr[0]}')
-    game_lobby = clientsocket.recv(1024)
-    print(f'{game_lobby} connected to.')
+    data = clientsocket.recv(1024)
+    lobby = pickle.loads(data)
     while True:
 
         try:
             data = clientsocket.recv(1024)
+            print(data)
             if data:
                 recv = pickle.loads(data)
+                print(f'{recv} i have got this data :O.')
                 operation = recv[0]
                 data = recv[1]
 
@@ -32,6 +34,7 @@ def new_conection(clientsocket, addr):
                     else:
                         data = pickle.dumps((None))
                     clientsocket.send(data)
+                    print(f'i have sent back {data}')
 
                 if operation == 'update':
                     games[data[0]][data[1]] = data[2]
@@ -47,6 +50,7 @@ def new_conection(clientsocket, addr):
 
         except Exception as e:
             print('ERROR', e)
+            games.pop(lobby)
             break
 
 
