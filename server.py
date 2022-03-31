@@ -40,10 +40,11 @@ def new_conection(clientsocket, addr):
 
                 if operation == 'add':
                     games[data] = [1, False, [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
+                    lobby = data
         except Exception as e:
             print('ERROR', e)
             games.pop(lobby)
+            print(f'i have removed lobby ')
             break
 
 
