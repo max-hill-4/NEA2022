@@ -35,7 +35,6 @@ class Gameplay:
         self.gameboard.update(cfg.game_data[2])
         
         if tl.is_win(cfg.game_data[2]):
-            cfg.winner = True
             self.next_state = "RESULT"
 
     def state_draw(self, window):

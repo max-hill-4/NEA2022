@@ -111,4 +111,6 @@ def is_win(game_data):
             if data == game_data[index] and data != 0:
                 count += 1
             if count == 3:
+                if data == cfg.player:
+                    cfg.winner = True
                 return data
