@@ -21,12 +21,9 @@ def connect_server(game_lobby):
 def get_data():
 
     while True:
-        print('get data started!')
         data = pickle.dumps(('get', cfg.lobby_id))
         s.send(data)
-        print('i have sent get request and im waiting for a response.')
         data = pickle.loads(s.recv(1024))
-        print(f'{cfg.game_data} recieved')
         cfg.game_data = data
         time.sleep(1)
 
@@ -35,9 +32,7 @@ def check_data(game_lobby):
 
     data = pickle.dumps(('get', game_lobby))
     s.send(data)
-    print('waiting for response from server!!!!')
     recv = pickle.loads(s.recv(1024))
-    print(f'{recv} recieved')
     if recv:
         return True
 
@@ -45,7 +40,7 @@ def check_data(game_lobby):
 def update_lobby(lobby_id, index, value):
     data = pickle.dumps(('update', (lobby_id, index, value)))
     s.send(data)
-    print(f'{pickle.loads(data)[1]} has been sent')
+    print(f'{pickle.loads(data)[1]} updated')
 
 
 def del_lobby(lobby_id):
