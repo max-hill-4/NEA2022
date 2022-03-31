@@ -10,7 +10,9 @@ states = {
     "LOGIN": states.login.Login(),
     "LOBBY": states.lobby.Lobby(),
     "WAIT": states.wait.Wait(),
-    "GAMEPLAY": states.gameplay.Gameplay()
+    "GAMEPLAY": states.gameplay.Gameplay(),
+    "RESULT": states.result.Result()
+
 }
 
 
@@ -40,7 +42,7 @@ class Game:
             self.update()
             self.draw()
             py.display.update()
-        py.quit() 
+        py.quit()
 
 
 game = Game(states, "MENU")

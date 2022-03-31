@@ -104,11 +104,11 @@ class Gameboard:
                 self.draw_list[-1].image = cfg.nought
 
 
-def is_win(game_data, possible_wins):
-    for win in possible_wins:
+def is_win(game_data):
+    for win in cfg.nought_wins + cfg.cross_wins:
         count = 0
         for index, data in enumerate(win):
             if data == game_data[index] and data != 0:
                 count += 1
             if count == 3:
-                return True
+                return data

@@ -25,6 +25,7 @@ def get_data():
         data = pickle.dumps(('get', cfg.lobby_id))
         s.send(data)
         data = pickle.loads(s.recv(1024))
+        print(data)
         cfg.game_data = data
         time.sleep(1)
 

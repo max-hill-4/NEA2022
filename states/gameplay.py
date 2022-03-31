@@ -19,20 +19,24 @@ class Gameplay:
         if self.button_back.pressed(event):
             self.next_state = "MENU"
 
+        # If its your move
         if cfg.game_data[0] == cfg.player:
             for index, data in enumerate(self.gameboard.object_list):
                 if self.gameboard.object_list[data].pressed(event):
+                # If any of the squares are pressed
+                    # change the game data
                     cfg.game_data[2][index] = cfg.player
+                    # send the new game data to the server
                     nt.update_lobby(cfg.lobby_id, 2, cfg.game_data[2])
+                    # changes the player move to enemy
                     move = 2 if cfg.player == 1 else 1
                     nt.update_lobby(cfg.lobby_id, 0, move)
 
         self.gameboard.update(cfg.game_data[2])
-        if tl.is_win(cfg.game_data[2], cfg.cross_wins):
-            print('cross wins!')
-
-        if tl.is_win(cfg.game_data[2], cfg.nought_wins):
-            print('nought wins!')
+        
+        if tl.is_win(cfg.game_data[2]):
+            cfg.winner = True
+            self.next_state = "RESULT"
 
     def state_draw(self, window):
 
