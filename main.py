@@ -40,7 +40,7 @@ class Game:
             self.update()
             self.draw()
             py.display.update()
-        py.quit()
+        py.quit() 
 
 
 game = Game(states, "MENU")
