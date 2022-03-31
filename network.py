@@ -13,8 +13,6 @@ port, server = 31654, "141.147.118.101"
 def connect_server(game_lobby):
     try:
         s.connect((server, port))
-        data = pickle.dumps((game_lobby))
-        s.send(data)
 
     except Exception as e:
         print(e)

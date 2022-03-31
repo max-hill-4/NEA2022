@@ -14,9 +14,7 @@ print(f'server on {host} listening to {port}')
 
 
 def new_conection(clientsocket, addr):
-    print(f'new thread created! connection from {addr[0]}')
-    data = clientsocket.recv(1024)
-    lobby = pickle.loads(data)
+
     while True:
 
         try:
