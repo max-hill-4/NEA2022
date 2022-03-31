@@ -22,7 +22,6 @@ def new_conection(clientsocket, addr):
             print(data)
             if data:
                 recv = pickle.loads(data)
-                print(f'{recv} i have got this data :O.')
                 operation = recv[0]
                 data = recv[1]
 
@@ -32,19 +31,15 @@ def new_conection(clientsocket, addr):
                     else:
                         data = pickle.dumps((None))
                     clientsocket.send(data)
-                    print(f'i have sent back {data}')
 
                 if operation == 'update':
                     games[data[0]][data[1]] = data[2]
-                    print('games', games)
 
                 if operation == 'delete':
                     games.pop(data, None)
-                    print('games', games)
 
                 if operation == 'add':
                     games[data] = [1, False, [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-                    print('games', games)
 
         except Exception as e:
             print('ERROR', e)
