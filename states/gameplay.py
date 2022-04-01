@@ -32,9 +32,11 @@ class Gameplay:
                     move = 2 if cfg.player == 1 else 1
                     nt.update_lobby(cfg.lobby_id, 0, move)
 
+
+        # i can probably append to the draw list in the pressed check.
         self.gameboard.update(cfg.game_data[2])
         
-        if tl.is_win(cfg.game_data[2]):
+        if tl.is_win():
             self.next_state = "RESULT"
 
     def state_draw(self, window):

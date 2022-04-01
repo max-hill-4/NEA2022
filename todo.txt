@@ -2,21 +2,15 @@ create box checking for gameplay
 make database private somehow
 seperate textbox and button
 add check data function in the database file sqlinjectioncheck
-have a pip install ?tf
 make good readme
 fullscreen button
 music maybe
 maybe make main inside of states and seperate ''start' file
-defo a way to auto add buyttins to object list
 bit scuffed loading buttons in init as it gets loads on import
-when gameplay window is closed the sockert and gmaelobby needs to be deleted
-sql scheduler that has timestamp and after time period delete gamelobby from db
 / or if they have been waiting in a ' wait # window foir time period
-[BIG ELPROBLEMO OF PORT FORWARDING NONSESNE]
 change db server to oracle or soemthing
-clearout database creatlobby shtie
 stop using pickle;? for json or something
 i think singleton netowork worthit becuyase you can have self. gamelobby!!
-better way to make 4 digit code bro
-make server code look nice
-gui check if conneciton
+only connect if online is chosen
+win lose screen is scuffed - make a image and only blit winner if winner?
+run function that will update cfg. winner if win !.

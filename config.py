@@ -14,6 +14,7 @@ lobby_id = None
 game_data = None, None, None
 player = 1
 winner = False
+
 cross_wins = [
     (1, 1, 1, 0, 0, 0, 0, 0, 0),
     (0, 0, 0, 1, 1, 1, 0, 0, 0),

@@ -93,9 +93,9 @@ class Gameboard:
                                                cfg.gameboard_column[y])
         self.object_list_values = list(self.object_list.values())
 
-    def update(self, game_data):
+    def update(self):
 
-        for index, value in enumerate(game_data):
+        for index, value in enumerate(cfg.game_data[2]):
             if value == 1:
                 self.draw_list.append(self.object_list_values[index])
                 self.draw_list[-1].image = cfg.cross

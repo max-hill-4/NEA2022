@@ -15,7 +15,6 @@ class Result:
     def state_draw(self, window):
         
         if cfg.winner:
-            print('you are the winner so im displaying the winner screen')
             window.blit(cfg.background_win, (0, 0))
 
         else:
