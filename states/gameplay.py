@@ -10,7 +10,7 @@ class Gameplay:
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back_image, 0, 0)
         self.gameboard = tl.Gameboard()
-
+        self.draw_list = ()
     def get_event(self, event):
 
         if event.type == py.QUIT:
@@ -26,6 +26,7 @@ class Gameplay:
                 # If any of the squares are pressed
                     # change the game data
                     cfg.game_data[2][index] = cfg.player
+                    self.draw_list.append(data)
                     # send the new game data to the server
                     nt.update_lobby(cfg.lobby_id, 2, cfg.game_data[2])
                     # changes the player move to enemy
@@ -34,7 +35,7 @@ class Gameplay:
 
 
         # i can probably append to the draw list in the pressed check.
-        self.gameboard.update(cfg.game_data[2])
+        # self.gameboard.update(cfg.game_data[2])
         
         if tl.is_win():
             self.next_state = "RESULT"
