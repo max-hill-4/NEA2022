@@ -18,8 +18,7 @@ class InputBox:
         self.hidden = hidden
 
     def run(self, event):
-        """
-        """
+ 
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
             if (self.xpos < pos[0] < self.xpos + cfg.text_box_width and
@@ -40,19 +39,17 @@ class InputBox:
                     self.text += event.unicode
 
     def draw(self, surface):
-        surface.blit(self.image, (self.xpos, self.ypos))
-        text_surface = cfg.font.render(self.text, True, (0, 0, 0))
+        
         if self.hidden:
             text_surface = cfg.font.render(len(self.text)*'*', True, (0, 0, 0))
-
+        else:
+            text_surface = cfg.font.render(self.text, True, (0, 0, 0))
+        
+        surface.blit(self.image, (self.xpos, self.ypos))
         surface.blit(text_surface, (self.xpos + 10, self.ypos + 10))
 
 
 class Button:
-    """ Takes image and positional paramaters and creates a pygame
-    surface with a pressed method to check if the left moust button
-    is pressed and the mouse position is ontop the surface.
-    """
 
     def __init__(self, image, xpos, ypos):
         """ Constructor method that sets parameters as attributes
