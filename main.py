@@ -2,7 +2,6 @@ import pygame as py
 import config as cfg
 import states
 
-# there has been a major change oh no!!!!
 py.init()
 
 states = {
@@ -33,6 +32,7 @@ class Game:
             self.state = self.states[change_state]
 
     def draw(self):
+        # I could call cfg.window in draw calls.
         self.state.state_draw(cfg.window)
 
     def run(self):
