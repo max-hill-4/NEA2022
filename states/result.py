@@ -19,3 +19,5 @@ class Result:
 
         else:
             window.blit(cfg.background_lose, (0, 0))
+
+    

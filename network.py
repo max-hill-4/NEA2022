@@ -12,7 +12,6 @@ port, server = 31654, "141.147.118.101"
 
 def connect_server(game_lobby):
     try:
-        print('attemptiong connection to server')
         s.connect((server, port))
 
     except Exception as e:

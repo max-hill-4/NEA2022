@@ -93,22 +93,23 @@ class Gameboard:
                                                cfg.gameboard_column[y])
         self.object_list_values = list(self.object_list.values())
 
-    def update(self):
+    def draw(self, window):
 
-        for index, value in enumerate(cfg.game_data[2]):
-            if value == 1:
-                self.draw_list.append(self.object_list_values[index])
-                self.draw_list[-1].image = cfg.cross
-            if value == 2:
-                self.draw_list.append(self.object_list_values[index])
-                self.draw_list[-1].image = cfg.nought
+        if cfg.game_data[2]:
+            for index, value in enumerate(cfg.game_data[2]):
+                if value == 1:
+                    self.object_list_values[index].image = cfg.cross
+                    self.object_list_values[index].draw(window)
 
+                if value == 2:
+                    self.object_list_values[index].image = cfg.nought
+                    self.object_list_values[index].draw(window)
 
 def is_win():
     for win in cfg.nought_wins + cfg.cross_wins:
         count = 0
         for index, data in enumerate(win):
-            if data == game_data[index] and data != 0:
+            if data == cfg.game_data[2][index] and data != 0:
                 count += 1
             if count == 3:
                 if data == cfg.player:
