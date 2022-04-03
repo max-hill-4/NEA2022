@@ -26,13 +26,16 @@ class Lobby:
 
         if self.button_create.pressed(event):
             cfg.lobby_id = nt.lobby_code()
-            nt.connect_server(cfg.lobby_id)
-            nt.create_lobby(cfg.lobby_id)
+            try:
+                nt.connect_server(cfg.lobby_id)
+                nt.create_lobby(cfg.lobby_id)
 
-            t = th.Thread(target=nt.get_data)
-            t.start()
-            self.next_state = "WAIT"
-
+                t = th.Thread(target=nt.get_data)
+                t.start()
+                self.next_state = "WAIT"
+            except:
+                print('server is not online.')
+        
         if self.button_confirm.pressed(event):
             nt.connect_server(cfg.lobby_id)
             if nt.check_data(self.text_box.text):
