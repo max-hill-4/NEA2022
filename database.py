@@ -1,45 +1,34 @@
-import mysql.connector
+import mariadb
+import sys
 
+# Connect to MariaDB Platform
 
-mydb = mysql.connector.connect(
-        host='database-1.c1ajdf2akg8w.eu-west-2.rds.amazonaws.com',
-        user='admin',
-        password="qwertyui",
-        database="test"
-        )
-mycursor = mydb.cursor()
+conn = mariadb.connect(
+    user="user",
+    password="temp",
+    host="141.147.118.101",
+    port=3306,
+    database="scores"
 
+)
 
-def get_data(table, field, record, data):
-    mycursor.execute(f"SELECT {field} FROM {table} WHERE {record} = '{data}'")
-    return mycursor.fetchall()
+mycursor = conn.cursor()
 
+def check_data(data):
 
-def check_data(table, data):
-    mycursor.execute(f"SELECT * FROM {table}")
+    TEXT = (f"SELECT score FROM scores WHERE username='{data}'")
+    mycursor.execute(TEXT)
     table_data = mycursor.fetchall()
 
-    for row in table_data:
-        for record in row:
-            if record == data:
-                return True
+    if table_data:
+        return True
 
 
-def del_data(table, field, data):
-    sql = (f"DELETE FROM {table} WHERE {field} = '{data}'")
-    mycursor.execute(sql)
-    mydb.commit()
-    print(f'{data} deleted')
+def add_data(data):
 
-
-def add_data(table, first, second):
-
-    sql = f"INSERT INTO {table} VALUES (%s, %s)"
-    val = (first, second)
-    mycursor.execute(sql, val)
-    mydb.commit()
-    print(f" '{first}' and '{second}' have been added")
-
+    TEXT = (f"INSERT INTO scores (username, score) VALUES ('{data}', 0)")
+    mycursor.execute(TEXT)
+    conn.commit()
 
 if __name__ == '__main__':
-    get_data()
+    print(add_data('whaat'))
