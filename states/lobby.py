@@ -33,9 +33,9 @@ class Lobby:
                 t = th.Thread(target=nt.get_data)
                 t.start()
                 self.next_state = "WAIT"
-            except:
+            except Exception:
                 print('server is not online.')
-        
+
         if self.button_confirm.pressed(event):
             nt.connect_server(cfg.lobby_id)
             if nt.check_data(self.text_box.text):

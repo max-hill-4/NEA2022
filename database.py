@@ -1,5 +1,4 @@
 import mariadb
-import sys
 
 # Connect to MariaDB Platform
 
@@ -13,6 +12,7 @@ conn = mariadb.connect(
 )
 
 mycursor = conn.cursor()
+
 
 def check_data(data):
 
@@ -29,6 +29,7 @@ def add_data(data):
     TEXT = (f"INSERT INTO scores (username, score) VALUES ('{data}', 0)")
     mycursor.execute(TEXT)
     conn.commit()
+
 
 if __name__ == '__main__':
     print(add_data('whaat'))

@@ -37,6 +37,10 @@ def check_data(game_lobby):
         return True
 
 
+def close():
+    s.close()
+
+
 def update_lobby(lobby_id, index, value):
     data = pickle.dumps(('update', (lobby_id, index, value)))
     s.send(data)

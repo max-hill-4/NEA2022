@@ -1,7 +1,7 @@
 import pygame as py
 import tools as tl
 import config as cfg
-
+import network as nt
 
 class Wait:
     def __init__(self):
@@ -18,6 +18,7 @@ class Wait:
             self.next_state = "GAMEPLAY"
 
         if self.button_back.pressed(event):
+            nt.close()
             self.next_state = "LOBBY"
 
     def state_draw(self, window):

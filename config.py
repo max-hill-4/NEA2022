@@ -54,7 +54,6 @@ background_gameplay = py.image.load("data/background_game.png").convert_alpha()
 background_blank = py.image.load("data/background_blank.png").convert_alpha()
 
 
-
 # Player images
 cross = py.image.load("data/cross.png").convert_alpha()
 nought = py.image.load("data/nought.png").convert_alpha()
@@ -63,5 +62,3 @@ blank = py.image.load("data/blank.png").convert_alpha()
 image_win = py.image.load("data/win.png").convert_alpha()
 image_lose = py.image.load("data/lose.png").convert_alpha()
 # Caption string to get called
-
-

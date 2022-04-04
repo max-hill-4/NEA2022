@@ -10,9 +10,11 @@ class Result:
         self.button_play = tl.Button(cfg.button_replay, 110, 300)
         self.button_highscores = tl.Button(cfg.button_highscores, 430, 300)
         self.button_quit = tl.Button(cfg.button_quit, 500, 200)
-        self.object_list = (self.button_play, self.button_quit, self.button_highscores)
+        self.object_list = (self.button_play, self.button_quit,
+                            self.button_highscores)
+
     def get_event(self, event):
-        
+
         if event.type == py.QUIT:
             self.done = True
 
@@ -20,9 +22,8 @@ class Result:
             self.next_state = "GAMEPLAY"
 
     def state_draw(self, window):
-        image =  cfg.image_win if cfg.winner == True else cfg.image_lose
+        image = cfg.image_win if cfg.winner is True else cfg.image_lose
         window.blit(cfg.background_blank, (0, 0))
         window.blit(image, (50, 50))
         for n in self.object_list:
             n.draw(window)
-    

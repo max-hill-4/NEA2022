@@ -11,6 +11,7 @@ class Gameplay:
         self.button_back = tl.Button(cfg.button_back, 0, 0)
         self.gameboard = tl.Gameboard()
         self.font = py.font.Font("data/font.ttf", 12)
+
     def get_event(self, event):
 
         if event.type == py.QUIT:
@@ -23,7 +24,7 @@ class Gameplay:
         if cfg.game_data[0] == cfg.player:
             for index, data in enumerate(self.gameboard.object_list):
                 if self.gameboard.object_list[data].pressed(event):
-                # If any of the squares are pressed
+                    # If any of the squares are pressed
                     # change the game data
                     cfg.game_data[2][index] = cfg.player
                     # send the new game data to the server
@@ -32,11 +33,7 @@ class Gameplay:
                     move = 2 if cfg.player == 1 else 1
                     nt.update_lobby(cfg.lobby_id, 0, move)
 
-
         # i can probably append to the draw list in the pressed check.
-
-        
-        
         if tl.is_win():
             self.next_state = "RESULT"
 
@@ -44,16 +41,15 @@ class Gameplay:
 
         window.blit(cfg.background_gameplay, (0, 0))
 
-        # AHVE THIS DRAW GAMEBOARD IMAGE ALSO!!!? 
+        # AHVE THIS DRAW GAMEBOARD IMAGE ALSO!!!?
         self.gameboard.draw(window)
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
         self.button_back.draw(window)
         if cfg.game_data[0] == cfg.player:
-            text_surface = self.font.render('its your move!', True, (183, 60, 60))
-            
+            text = self.font.render('Your Move', True, (183, 60, 60))
 
         else:
-            text_surface = self.font.render('Not your move!', True, (183, 60, 60))
+            text = self.font.render('Not Your Move', True, (183, 60, 60))
 
-        window.blit(text_surface, (20, 50))
+        window.blit(text, (20, 50))
