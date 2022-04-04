@@ -8,7 +8,7 @@ class Gameplay:
     def __init__(self):
         self.done = False
         self.next_state = None
-        self.button_back = tl.Button(cfg.button_back_image, 0, 0)
+        self.button_back = tl.Button(cfg.button_back, 0, 0)
         self.gameboard = tl.Gameboard()
     def get_event(self, event):
 

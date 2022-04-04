@@ -31,11 +31,11 @@ cross_wins = [
 nought_wins = [tuple(2 if y else 0 for y in x) for x in cross_wins]
 
 # Button images
-button_login_image = py.image.load("data/button_login.png").convert_alpha()
-button_create_image = py.image.load("data/button_create.png").convert_alpha()
-button_quit_image = py.image.load("data/button_quit.png").convert_alpha()
-button_back_image = py.image.load("data/button_back.png").convert_alpha()
-button_confirm_image = py.image.load("data/button_confirm.png").convert_alpha()
+button_login = py.image.load("data/button_login.png").convert_alpha()
+button_create = py.image.load("data/button_create.png").convert_alpha()
+button_quit = py.image.load("data/button_quit.png").convert_alpha()
+button_back = py.image.load("data/button_back.png").convert_alpha()
+button_confirm = py.image.load("data/button_confirm.png").convert_alpha()
 
 # Text box images
 text_box = py.image.load("data/text_box.png").convert_alpha()
