@@ -1,7 +1,7 @@
 import pygame as py
 import tools as tl
 import config as cfg
-
+import network as nt
 
 class Result:
     def __init__(self):
@@ -19,6 +19,7 @@ class Result:
             self.done = True
 
         if self.button_play.pressed(event):
+            nt.update(2, (None, None, None, None))
             self.next_state = "GAMEPLAY"
 
     def state_draw(self, window):

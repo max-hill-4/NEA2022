@@ -28,10 +28,10 @@ class Gameplay:
                     # change the game data
                     cfg.game_data[2][index] = cfg.player
                     # send the new game data to the server
-                    nt.update_lobby(cfg.lobby_id, 2, cfg.game_data[2])
+                    nt.update_lobby(2, cfg.game_data[2])
                     # changes the player move to enemy
                     move = 2 if cfg.player == 1 else 1
-                    nt.update_lobby(cfg.lobby_id, 0, move)
+                    nt.update_lobby(0, move)
 
         # i can probably append to the draw list in the pressed check.
         if tl.is_win():
@@ -46,6 +46,7 @@ class Gameplay:
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
         self.button_back.draw(window)
+        
         if cfg.game_data[0] == cfg.player:
             text = self.font.render('Your Move', True, (183, 60, 60))
 

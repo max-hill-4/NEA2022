@@ -25,22 +25,22 @@ class Lobby:
             self.next_state = "LOGIN"
 
         if self.button_create.pressed(event):
-            cfg.lobby_id = nt.lobby_code()
+            # cfg.lobby_id = nt.lobby_code()
             try:
-                nt.connect_server(cfg.lobby_id)
-                nt.create_lobby(cfg.lobby_id)
-
+                nt.connect_server()
+                nt.create_lobby()
+                cfg.get_data = True
                 t = th.Thread(target=nt.get_data)
                 t.start()
                 self.next_state = "WAIT"
-            except Exception:
-                print('server is not online.')
+            except Exception as e:
+                print(e, 'server is not online.')
 
         if self.button_confirm.pressed(event):
-            nt.connect_server(cfg.lobby_id)
+            nt.connect_server()
             if nt.check_data(self.text_box.text):
-                nt.update_lobby(self.text_box.text, 1, True)
                 cfg.lobby_id = self.text_box.text
+                nt.update_lobby(1, True)
 
                 t = th.Thread(target=nt.get_data)
                 t.start()
