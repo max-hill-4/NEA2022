@@ -25,6 +25,6 @@ class Result:
     def state_draw(self, window):
         image = cfg.image_win if cfg.winner is True else cfg.image_lose
         window.blit(cfg.background_blank, (0, 0))
-        window.blit(image, (50, 50))
+        window.blit(image, (105, 50))
         for n in self.object_list:
             n.draw(window)
