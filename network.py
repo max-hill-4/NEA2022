@@ -43,16 +43,9 @@ def update_lobby(lobby_id, index, value):
     print(f'{pickle.loads(data)[1]} updated')
 
 
-def del_lobby(lobby_id):
-    data = pickle.dumps(('delete', lobby_id))
-    s.send(data)
-    print(f'{pickle.loads(data)[1]} has been deleted')
-
-
 def create_lobby(lobby_id):
     data = pickle.dumps(('add', lobby_id))
     s.send(data)
-    print(f'{pickle.loads(data)[1]} has been added')
 
 
 def lobby_code():

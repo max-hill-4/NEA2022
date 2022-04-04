@@ -8,7 +8,8 @@ class Wait:
         self.done = False
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back, 0, 0)
-
+        # Init pygame font
+        self.font = py.font.Font("data/font.ttf", 28)
     def get_event(self, event):
         if event.type == py.QUIT:
             self.done = True
@@ -21,6 +22,10 @@ class Wait:
 
     def state_draw(self, window):
 
-        
+
+        text_surface = cfg.font.render('CODE: ' + cfg.lobby_id, True, (183, 60, 60))
+
+
         window.blit(cfg.background_wait, (0, 0))
+        window.blit(text_surface, (225, 270))
         self.button_back.draw(window)

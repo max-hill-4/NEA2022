@@ -16,7 +16,8 @@ class InputBox:
         self.selected = False
         self.text = ''
         self.hidden = hidden
-
+        # Init pygame font
+        self.font = py.font.Font("data/font.ttf", 14)
     def run(self, event):
  
         if event.type == py.MOUSEBUTTONDOWN:
@@ -41,9 +42,9 @@ class InputBox:
     def draw(self, surface):
         
         if self.hidden:
-            text_surface = cfg.font.render(len(self.text)*'*', True, (0, 0, 0))
+            text_surface = self.font.render(len(self.text)*'*', True, (0, 0, 0))
         else:
-            text_surface = cfg.font.render(self.text, True, (0, 0, 0))
+            text_surface = self.font.render(self.text, True, (0, 0, 0))
         
         surface.blit(self.image, (self.xpos, self.ypos))
         surface.blit(text_surface, (self.xpos + 10, self.ypos + 10))
@@ -101,6 +102,7 @@ class Gameboard:
                 if value == 2:
                     self.object_list_values[index].image = cfg.nought
                     self.object_list_values[index].draw(window)
+# integrate witrh gameboad>
 
 def is_win():
     for win in cfg.nought_wins + cfg.cross_wins:
@@ -111,4 +113,5 @@ def is_win():
             if count == 3:
                 if data == cfg.player:
                     cfg.winner = True
+                    print(cfg.winner)
                 return data

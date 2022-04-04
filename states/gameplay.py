@@ -10,6 +10,7 @@ class Gameplay:
         self.next_state = None
         self.button_back = tl.Button(cfg.button_back, 0, 0)
         self.gameboard = tl.Gameboard()
+        self.font = py.font.Font("data/font.ttf", 12)
     def get_event(self, event):
 
         if event.type == py.QUIT:
@@ -43,7 +44,16 @@ class Gameplay:
 
         window.blit(cfg.background_gameplay, (0, 0))
 
+        # AHVE THIS DRAW GAMEBOARD IMAGE ALSO!!!? 
         self.gameboard.draw(window)
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
         self.button_back.draw(window)
+        if cfg.game_data[0] == cfg.player:
+            text_surface = self.font.render('its your move!', True, (183, 60, 60))
+            
+
+        else:
+            text_surface = self.font.render('Not your move!', True, (183, 60, 60))
+
+        window.blit(text_surface, (20, 50))
