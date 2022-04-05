@@ -7,7 +7,7 @@ import time
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-port, server = 31654, "141.147.118.101"
+port, server = 31654, "nidalee.maxh.cc"
 
 
 def connect_server():

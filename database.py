@@ -5,7 +5,7 @@ import mariadb
 conn = mariadb.connect(
     user="user",
     password="temp",
-    host="141.147.118.101",
+    host="nidalee.maxh.cc",
     port=3306,
     database="scores"
 
