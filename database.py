@@ -23,6 +23,11 @@ def check_data(data):
     if table_data:
         return True
 
+def fetch_data():
+    TEXT = ("SELECT username, score FROM scores ORDER BY score DESC LIMIT 10")
+    mycursor.execute(TEXT)
+    table_data = mycursor.fetchall()
+    return table_data
 
 def add_data(data):
 
@@ -32,4 +37,4 @@ def add_data(data):
 
 
 if __name__ == '__main__':
-    print(add_data('whaat'))
+    print(fetch_data())
