@@ -27,6 +27,7 @@ class Gameplay:
                     # If any of the squares are pressed
                     # change the game data
                     cfg.game_data[2][index] = cfg.player
+                    
                     # send the new game data to the server
                     nt.update_lobby(2, cfg.game_data[2])
                     # changes the player move to enemy
@@ -42,15 +43,17 @@ class Gameplay:
         window.blit(cfg.background_gameplay, (0, 0))
 
         # AHVE THIS DRAW GAMEBOARD IMAGE ALSO!!!?
-        self.gameboard.draw(window)
+        # needs to be here to draw over screen display!
+        self.gameboard.draw()
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
         self.button_back.draw(window)
         
         if cfg.game_data[0] == cfg.player:
             text = self.font.render('Your Move', True, (183, 60, 60))
-
         else:
             text = self.font.render('Not Your Move', True, (183, 60, 60))
 
+        playertext = self.font.render(str(cfg.player), True, (183, 60, 60))
         window.blit(text, (20, 50))
+        window.blit(cfg.username, (20, 80))

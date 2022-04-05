@@ -21,12 +21,18 @@ def connect_server():
 def get_data():
 
     while cfg.get_data is True:
-        data = pickle.dumps(('get', cfg.lobby_id))
-        s.send(data)
-        data = pickle.loads(s.recv(1024))
-        cfg.game_data = data
-        time.sleep(1)
+        try: 
+            data = pickle.dumps(('get', cfg.lobby_id))
+            s.send(data)
+            data = pickle.loads(s.recv(1024))
+            cfg.game_data = data
+            time.sleep(1)
+            print(f' i got {data}')
+        except Exception as e:
+            print(e)
+    print('this thread has ended.')
 
+    
 def check_data(game_lobby):
 
     data = pickle.dumps(('get', game_lobby))

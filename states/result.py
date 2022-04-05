@@ -19,9 +19,18 @@ class Result:
             self.done = True
 
         if self.button_play.pressed(event):
-            nt.update_lobby(2, (None, None, None, None))
-            self.next_state = "GAMEPLAY"
-
+            
+            if cfg.player == 1:
+                cfg.game_data[1] = False
+                nt.update_lobby(1, False)
+                nt.update_lobby(2, [0, 0, 0, 0, 0, 0, 0, 0, 0])
+                self.next_state = "WAIT"
+            else:
+                if cfg.game_data[1] == False:
+                    nt.update_lobby(1, True)
+                    self.next_state = "WAIT"
+                    
+    
     def state_draw(self, window):
         image = cfg.image_win if cfg.winner is True else cfg.image_lose
         window.blit(cfg.background_blank, (0, 0))

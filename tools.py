@@ -92,17 +92,17 @@ class Gameboard:
                                                cfg.gameboard_column[y])
         self.object_list_values = list(self.object_list.values())
 
-    def draw(self, window):
+    def draw(self):
 
         if cfg.game_data[2]:
             for index, value in enumerate(cfg.game_data[2]):
                 if value == 1:
                     self.object_list_values[index].image = cfg.cross
-                    self.object_list_values[index].draw(window)
+                    self.object_list_values[index].draw(cfg.window)
 
                 if value == 2:
                     self.object_list_values[index].image = cfg.nought
-                    self.object_list_values[index].draw(window)
+                    self.object_list_values[index].draw(cfg.window)
 
 
 # integrate witrh gameboad>

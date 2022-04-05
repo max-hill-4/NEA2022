@@ -28,7 +28,7 @@ class Login:
                 print('new user created')
                 db.add_data(self.text_box.text)
 
-            # self.username = self.text_box.text
+            cfg.username = self.text_box.text
             self.next_state = "LOBBY"
 
         self.text_box.run(event)

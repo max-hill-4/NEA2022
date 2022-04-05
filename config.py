@@ -10,12 +10,14 @@ py.display.set_caption("Noughts and Crosses")
 gameboard_position = 175, 20
 gameboard_row = {'row_0': 180, 'row_1': 280, 'row_2': 380}
 gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
+
+# these variables trigger me a bit - global for diffrent parts int he game.
 lobby_id = None
-game_data = None, None, None, None # fix this later maybe ?
+game_data = None, None, None, None 
 player = 1
 winner = False
 get_data = True
-
+username = None
 
 cross_wins = [
     (1, 1, 1, 0, 0, 0, 0, 0, 0),
@@ -63,4 +65,3 @@ gameboard = py.image.load("data/gameboard.png").convert_alpha()
 blank = py.image.load("data/blank.png").convert_alpha()
 image_win = py.image.load("data/win.png").convert_alpha()
 image_lose = py.image.load("data/lose.png").convert_alpha()
-# Caption string to get called
