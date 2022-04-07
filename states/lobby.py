@@ -13,8 +13,10 @@ class Lobby:
         self.button_back = tl.Button(cfg.button_back, 0, 0)
         self.button_confirm = tl.Button(cfg.button_confirm, 400, 300)
         self.button_create = tl.Button(cfg.button_create, 270, 150)
+        self.button_local = tl.Button(cfg.button_replay, 270, 200)
         self.object_list = (self.text_box, self.button_back,
-                            self.button_confirm, self.button_create)
+                            self.button_confirm, self.button_create,
+                            self.button_local)
 
     def get_event(self, event):
 
@@ -24,6 +26,8 @@ class Lobby:
         if self.button_back.pressed(event):
             self.next_state = "LOGIN"
 
+        if self.button_local.pressed(event):
+            self.next_state = "LOCAL"
         if self.button_create.pressed(event):
             # cfg.lobby_id = nt.lobby_code()
             try:

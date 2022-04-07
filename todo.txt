@@ -14,3 +14,5 @@ i think singleton netowork worthit becuyase you can have self. gamelobby!!
 only connect if online is chosen
 win lose screen is scuffed - make a image and only blit winner if winner?
 run function that will update cfg. winner if win !.
+iswin integration
+git webook to server

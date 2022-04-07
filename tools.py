@@ -88,24 +88,26 @@ class Gameboard:
         for x in cfg.gameboard_row:
             for y in cfg.gameboard_column:
                 self.object_list[x+y] = Button(cfg.blank,
-                                               cfg.gameboard_row[x],
-                                               cfg.gameboard_column[y])
+                                                cfg.gameboard_row[x],
+                                                cfg.gameboard_column[y])
         self.object_list_values = list(self.object_list.values())
 
-    def draw(self):
+    def draw(self,window):
 
-        if cfg.game_data[2]:
-            for index, value in enumerate(cfg.game_data[2]):
-                if value == 1:
-                    self.object_list_values[index].image = cfg.cross
-                    self.object_list_values[index].draw(cfg.window)
+        # checking if there is any gamedata
 
-                if value == 2:
-                    self.object_list_values[index].image = cfg.nought
-                    self.object_list_values[index].draw(cfg.window)
+        for index, value in enumerate(cfg.game_data[2]):
+            if value == 1:
+                self.object_list_values[index].image = cfg.cross
+                self.object_list_values[index].draw(window)
 
+            if value == 2:
+                self.object_list_values[index].image = cfg.nought
+                self.object_list_values[index].draw(window)
 
+        window.blit(cfg.gameboard, (cfg.gameboard_position))
 # integrate witrh gameboad>
+# change gamedata to be specific to the gameboad object 
 def is_win():
     for win in cfg.nought_wins + cfg.cross_wins:
         count = 0

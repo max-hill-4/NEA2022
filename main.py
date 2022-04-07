@@ -10,7 +10,8 @@ states = {
     "LOBBY": states.lobby.Lobby(),
     "WAIT": states.wait.Wait(),
     "GAMEPLAY": states.gameplay.Gameplay(),
-    "RESULT": states.result.Result()
+    "RESULT": states.result.Result(),
+    "LOCAL": states.local.Local()
 
 }
 

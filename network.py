@@ -21,6 +21,9 @@ def connect_server():
 def get_data():
 
     while cfg.get_data is True:
+        # busywait loop and not asyncrnous!!
+        print("")
+        # print('i have started the get thread omg')
         try: 
             data = pickle.dumps(('get', cfg.lobby_id))
             s.send(data)
@@ -30,7 +33,8 @@ def get_data():
             print(f' i got {data}')
         except Exception as e:
             print(e)
-    print('this thread has ended.')
+        
+    print('get data is false')
 
     
 def check_data(game_lobby):

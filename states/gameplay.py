@@ -26,14 +26,15 @@ class Gameplay:
                 if self.gameboard.object_list[data].pressed(event):
                     # If any of the squares are pressed
                     # change the game data
-                    cfg.game_data[2][index] = cfg.player
-                    
-                    # send the new game data to the server
-                    nt.update_lobby(2, cfg.game_data[2])
-                    # changes the player move to enemy
                     move = 2 if cfg.player == 1 else 1
                     nt.update_lobby(0, move)
-
+                    print(f'i have sent change move to {move}')
+                    
+                    cfg.game_data[2][index] = cfg.player
+                                        # send the new game data to the server
+                    nt.update_lobby(2, cfg.game_data[2])
+                    # changes the player move to enemy
+                    print("")
         # i can probably append to the draw list in the pressed check.
         if tl.is_win():
             self.next_state = "RESULT"
@@ -44,9 +45,7 @@ class Gameplay:
 
         # AHVE THIS DRAW GAMEBOARD IMAGE ALSO!!!?
         # needs to be here to draw over screen display!
-        self.gameboard.draw()
-
-        window.blit(cfg.gameboard, (cfg.gameboard_position))
+        self.gameboard.draw(window)        
         self.button_back.draw(window)
         
         if cfg.game_data[0] == cfg.player:
@@ -56,4 +55,4 @@ class Gameplay:
 
         playertext = self.font.render(str(cfg.player), True, (183, 60, 60))
         window.blit(text, (20, 50))
-        window.blit(cfg.username, (20, 80))
+        window.blit(playertext, (20, 80))
