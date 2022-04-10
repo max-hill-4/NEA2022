@@ -24,9 +24,9 @@ class Login:
 
         if self.button_confirm.pressed(event):
 
-            if not db.check_data('highscores', self.text_box.text):
+            if not db.check_data('scores', self.text_box.text):
 
-                db.add_data('highscores', self.text_box.text, 0)
+                db.add_data('scores', self.text_box.text, 0)
 
             # username = self.text_box_username.text
             self.next_state = "LOBBY"
