@@ -26,6 +26,8 @@ class Lobby:
         if self.button_back.pressed(event):
             self.next_state = "LOGIN"
 
+        if self.button_local.pressed(event):
+            self.next_state = "LOCAL"
          
         if self.button_create.pressed(event):
             # cfg.lobby_id = nt.lobby_code()
