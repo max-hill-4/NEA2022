@@ -12,7 +12,6 @@ states = {
     "GAMEPLAY": states.gameplay.Gameplay(),
     "RESULT": states.result.Result(),
     "LOCAL": states.local.Local()
-
 }
 
 
@@ -33,7 +32,6 @@ class Game:
             self.state = self.states[change_state]
 
     def draw(self):
-        # I could call cfg.window in draw calls.
         self.state.state_draw(cfg.window)
 
     def run(self):
