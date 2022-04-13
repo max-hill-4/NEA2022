@@ -37,4 +37,5 @@ def add_data(data):
 
 
 if __name__ == '__main__':
+    add_data('test')
     print(fetch_data())
