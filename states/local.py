@@ -7,7 +7,7 @@ class Local:
     def __init__(self):
         self.done = False
         self.next_state = None
-        self.button_back = tl.Button(cfg.button_back, 0, 0)
+        self.button_back = tl.Button(cfg.images['button_back'], 0, 0)
         self.gameboard = tl.Gameboard()
     def get_event(self, event):
         if event.type == py.QUIT:
@@ -25,7 +25,7 @@ class Local:
             self.next_state = "RESULT"
     def state_draw(self, window):
         
-        window.blit(cfg.background_blank, (0, 0))
+        window.blit(cfg.images['background_blank'], (0, 0))
 
         self.gameboard.draw(window)  
         self.button_back.draw(window)

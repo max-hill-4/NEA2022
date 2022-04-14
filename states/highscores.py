@@ -7,7 +7,7 @@ class Highscores:
     def __init__(self):
         self.done = False
         self.next_state = None
-        self.button_back = tl.Button(cfg.button_back, 0, 0)
+        self.button_back = tl.Button(cfg.images['button_back'], 0, 0)
         self.font = py.font.Font("data/font.ttf", 12)
     def get_event(self, event):
         if event.type == py.QUIT:
@@ -22,7 +22,7 @@ class Highscores:
         data = db.fetch_data()
         table_x = 200
         table_y = 30
-        window.blit(cfg.background_blank, (0, 0))
+        window.blit(cfg.images['background_blank'], (0, 0))
         self.button_back.draw(window)
         for record in data:
             username = self.font.render(record[0], True, (183, 60, 60))

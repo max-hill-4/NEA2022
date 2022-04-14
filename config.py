@@ -1,4 +1,5 @@
 import pygame as py
+import os
 py.init()
 
 # Window size
@@ -11,6 +12,7 @@ gameboard_position = 175, 20
 gameboard_row = {'row_0': 180, 'row_1': 280, 'row_2': 380}
 gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
 
+# 
 # these variables trigger me a bit - global for diffrent parts int he game.
 lobby_id = None
 game_data = 1, False, [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -35,33 +37,34 @@ cross_wins = [
 nought_wins = [tuple(2 if y else 0 for y in x) for x in cross_wins]
 
 # Button images
-button_login = py.image.load("data/button_login.png").convert_alpha()
-button_create = py.image.load("data/button_create.png").convert_alpha()
-button_quit = py.image.load("data/button_quit.png").convert_alpha()
-button_back = py.image.load("data/button_back.png").convert_alpha()
-button_confirm = py.image.load("data/button_confirm.png").convert_alpha()
-button_highscores = py.image.load("data/button_highscores.png").convert_alpha()
-button_replay = py.image.load("data/button_replay.png").convert_alpha()
-# Text box images
-text_box = py.image.load("data/text_box.png").convert_alpha()
-text_box_selected = py.image.load("data/text_box_outline.png").convert_alpha()
+files =[
+"button_login.png",
+"button_create.png",
+"button_quit.png",
+"button_back.png",
+"button_confirm.png",
+"button_highscores.png",
+"button_replay.png",
+"button_local.png",
+"text_box.png",
+"text_box_outline.png",
+"background_title.png",
+"background_login.png",
+"background_lobby.png",
+"background_wait.png",
+"background_game.png",
+"background_blank.png",
+"cross.png",
+"nought.png",
+"gameboard.png",
+"blank.png",
+"win.png",
+"lose.png",
+]
+images = {}
 
-# sizes of buttons
-text_box_width, text_box_height = text_box.get_width(), text_box.get_height()
-
-# Background images
-background_title = py.image.load("data/background_title.png").convert_alpha()
-background_login = py.image.load("data/background_login.png").convert_alpha()
-background_lobby = py.image.load("data/background_lobby.png").convert_alpha()
-background_wait = py.image.load("data/background_wait.png").convert_alpha()
-background_gameplay = py.image.load("data/background_game.png").convert_alpha()
-background_blank = py.image.load("data/background_blank.png").convert_alpha()
-
-
-# Player images
-cross = py.image.load("data/cross.png").convert_alpha()
-nought = py.image.load("data/nought.png").convert_alpha()
-gameboard = py.image.load("data/gameboard.png").convert_alpha()
-blank = py.image.load("data/blank.png").convert_alpha()
-image_win = py.image.load("data/win.png").convert_alpha()
-image_lose = py.image.load("data/lose.png").convert_alpha()
+for filepath in files:
+    path = filename = os.path.basename(filepath)
+    name, ext = os.path.splitext(path)
+    image = py.image.load(os.path.join('data', filepath)).convert_alpha()
+    images[name] = image

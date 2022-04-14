@@ -9,8 +9,8 @@ class Login:
         self.done = False
         self.next_state = None
         self.text_box = tl.InputBox(50, 200)
-        self.button_back = tl.Button(cfg.button_back, 0, 0)
-        self.button_confirm = tl.Button(cfg.button_confirm, 400, 200)
+        self.button_back = tl.Button(cfg.images['button_back'], 0, 0)
+        self.button_confirm = tl.Button(cfg.images['button_confirm'], 400, 200)
         self.object_list = (self.text_box, self.button_back,
                             self.button_confirm)
 
@@ -35,7 +35,7 @@ class Login:
 
     def state_draw(self, window):
 
-        window.blit(cfg.background_login, (0, 0))
+        window.blit(cfg.images['background_login'], (0, 0))
 
         for n in self.object_list:
             n.draw(window)

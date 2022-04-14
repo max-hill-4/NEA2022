@@ -48,5 +48,5 @@ class Game:
         py.quit()
 
 
-game = Game(states, "HIGHSCORES")
+game = Game(states, "MENU")
 game.run()

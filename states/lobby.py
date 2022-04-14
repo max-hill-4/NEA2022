@@ -10,10 +10,10 @@ class Lobby:
         self.done = False
         self.next_state = None
         self.text_box = tl.InputBox(150, 300)
-        self.button_back = tl.Button(cfg.button_back, 0, 0)
-        self.button_confirm = tl.Button(cfg.button_confirm, 400, 300)
-        self.button_create = tl.Button(cfg.button_create, 270, 150)
-        self.button_local = tl.Button(cfg.button_replay, 270, 200)
+        self.button_back = tl.Button(cfg.images['button_back'], 0, 0)
+        self.button_confirm = tl.Button(cfg.images['button_confirm'], 400, 300)
+        self.button_create = tl.Button(cfg.images['button_create'], 270, 150)
+        self.button_local = tl.Button(cfg.images['button_local'], 270, 200)
         self.object_list = (self.text_box, self.button_back,
                             self.button_confirm, self.button_create,
                             self.button_local)
@@ -61,7 +61,7 @@ class Lobby:
 
     def state_draw(self, window):
 
-        window.blit(cfg.background_lobby, (0, 0))
+        window.blit(cfg.images['background_lobby'], (0, 0))
 
         for n in self.object_list:
             n.draw(window)

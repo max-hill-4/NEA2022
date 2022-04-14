@@ -7,8 +7,8 @@ class Menu:
     def __init__(self):
         self.done = False
         self.next_state = None
-        self.button_login = tl.Button(cfg.button_login, 110, 300)
-        self.button_quit = tl.Button(cfg.button_quit, 430, 300)
+        self.button_login = tl.Button(cfg.images['button_login'], 110, 300)
+        self.button_quit = tl.Button(cfg.images['button_quit'], 430, 300)
         self.object_list = (self.button_login, self.button_quit)
 
     def get_event(self, event):
@@ -23,6 +23,6 @@ class Menu:
 
     def state_draw(self, window):
 
-        window.blit(cfg.background_title, (0, 0))
+        window.blit(cfg.images['background_title'], (0, 0))
         for n in self.object_list:
             n.draw(window)

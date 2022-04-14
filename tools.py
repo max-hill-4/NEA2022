@@ -12,8 +12,10 @@ class InputBox:
 
         self.xpos = xpos
         self.ypos = ypos
-        self.image = cfg.text_box
+        self.image = cfg.images['text_box']
         self.selected = False
+        self.text_box_width = self.image.get_width()
+        self.text_box_height = self.image.get_height()
         self.text = ''
         self.hidden = hidden
         # Init pygame font
@@ -24,14 +26,14 @@ class InputBox:
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
             # If the mouse is ontop of the button and clicked
-            if (self.xpos < pos[0] < self.xpos + cfg.text_box_width and
-                    self.ypos < pos[1] < self.ypos + cfg.text_box_height):
+            if (self.xpos < pos[0] < self.xpos + self.text_box_width and
+                    self.ypos < pos[1] < self.ypos + self.text_box_height):
                 self.selected = True
-                self.image = cfg.text_box_selected
+                self.image = cfg.images['text_box_outline']
 
             else:
                 self.selected = False
-                self.image = cfg.text_box
+                self.image = cfg.images['text_box']
 
         if self.selected:
             # doesnt type in box if the box hasnt been clicked on
@@ -61,8 +63,8 @@ class Button:
         """
         self.xpos = xpos
         self.ypos = ypos
-        self.buttonWidth = image.get_width()
-        self.buttonHeight = image.get_height()
+        self.button_width = image.get_width()
+        self.button_height = image.get_height()
         self.image = image
 
     def pressed(self, event):
@@ -74,8 +76,8 @@ class Button:
         """
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
-            if self.xpos < pos[0] < self.xpos + self.buttonWidth:
-                if self.ypos < pos[1] < self.ypos + self.buttonHeight:
+            if self.xpos < pos[0] < self.xpos + self.button_width:
+                if self.ypos < pos[1] < self.ypos + self.button_height:
                     return True
 
     def draw(self, surface):
@@ -89,7 +91,7 @@ class Gameboard:
         self.draw_list = []
         for x in cfg.gameboard_row:
             for y in cfg.gameboard_column:
-                self.object_list[x+y] = Button(cfg.blank,
+                self.object_list[x+y] = Button(cfg.images['blank'],
                                                 cfg.gameboard_row[x],
                                                 cfg.gameboard_column[y])
         self.object_list_values = list(self.object_list.values())
@@ -98,14 +100,14 @@ class Gameboard:
 
         for index, value in enumerate(cfg.game_data[2]):
             if value == 1:
-                self.object_list_values[index].image = cfg.cross
+                self.object_list_values[index].image = cfg.images['cross']
                 self.object_list_values[index].draw(window)
 
             if value == 2:
-                self.object_list_values[index].image = cfg.nought
+                self.object_list_values[index].image = cfg.images['nought']
                 self.object_list_values[index].draw(window)
 
-        window.blit(cfg.gameboard, (cfg.gameboard_position))
+        window.blit(cfg.images['gameboard'], (cfg.gameboard_position))
 
 
 def is_win():
