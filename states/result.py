@@ -30,6 +30,11 @@ class Result:
                     nt.update_lobby(1, True)
                     self.next_state = "WAIT"
                     
+        if button_highscores.pressed(event):
+            self.next_state = "LOBBY"
+
+        if button_highscores.pressed(event):
+            self.next_state = "HIGHSCORES"
     
     def state_draw(self, window):
         image = cfg.image_win if cfg.winner is True else cfg.image_lose

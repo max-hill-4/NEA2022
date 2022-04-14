@@ -31,11 +31,10 @@ class Gameplay:
                     print(f'i have sent change move to {move}')
                     
                     cfg.game_data[2][index] = cfg.player
-                                        # send the new game data to the server
+                    # send the new game data to the server
                     nt.update_lobby(2, cfg.game_data[2])
                     # changes the player move to enemy
                     print("")
-        # i can probably append to the draw list in the pressed check.
         if tl.is_win():
             self.next_state = "RESULT"
 
@@ -43,11 +42,10 @@ class Gameplay:
 
         window.blit(cfg.background_gameplay, (0, 0))
 
-        # AHVE THIS DRAW GAMEBOARD IMAGE ALSO!!!?
-        # needs to be here to draw over screen display!
         self.gameboard.draw(window)        
         self.button_back.draw(window)
         
+        # indicates whether its your move or opponents
         if cfg.game_data[0] == cfg.player:
             text = self.font.render('Your Move', True, (183, 60, 60))
         else:

@@ -23,6 +23,7 @@ class InputBox:
 
         if event.type == py.MOUSEBUTTONDOWN:
             pos = py.mouse.get_pos()
+            # If the mouse is ontop of the button and clicked
             if (self.xpos < pos[0] < self.xpos + cfg.text_box_width and
                     self.ypos < pos[1] < self.ypos + cfg.text_box_height):
                 self.selected = True
@@ -33,8 +34,8 @@ class InputBox:
                 self.image = cfg.text_box
 
         if self.selected:
+            # doesnt type in box if the box hasnt been clicked on
             if event.type == py.KEYDOWN:
-
                 if event.key == py.K_BACKSPACE:
                     self.text = self.text[:-1]
                 else:
@@ -42,6 +43,7 @@ class InputBox:
 
     def draw(self, surface):
 
+        # chooses whether the data is sensitive or not
         if self.hidden:
             text = self.font.render(len(self.text)*'*', True, (0, 0, 0))
         else:
@@ -94,8 +96,6 @@ class Gameboard:
 
     def draw(self,window):
 
-        # checking if there is any gamedata
-
         for index, value in enumerate(cfg.game_data[2]):
             if value == 1:
                 self.object_list_values[index].image = cfg.cross
@@ -106,8 +106,8 @@ class Gameboard:
                 self.object_list_values[index].draw(window)
 
         window.blit(cfg.gameboard, (cfg.gameboard_position))
-# integrate witrh gameboad>
-# change gamedata to be specific to the gameboad object 
+
+
 def is_win():
     for win in cfg.nought_wins + cfg.cross_wins:
         count = 0

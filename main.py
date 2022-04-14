@@ -2,8 +2,10 @@ import pygame as py
 import config as cfg
 import states
 
+# load pygame display
 py.init()
 
+# Screen dictionary
 states = {
     "MENU": states.menu.Menu(),
     "LOGIN": states.login.Login(),
@@ -11,12 +13,14 @@ states = {
     "WAIT": states.wait.Wait(),
     "GAMEPLAY": states.gameplay.Gameplay(),
     "RESULT": states.result.Result(),
-    "LOCAL": states.local.Local()
+    "LOCAL": states.local.Local(),
+    "HIGHSCORES" : states.highscores.Highscores()
 }
 
 
 class Game:
     def __init__(self, states, start_state):
+        # states = object dictionary, start_state = single object
         self.states = states
         self.state = self.states[start_state]
 
@@ -25,7 +29,7 @@ class Game:
             self.state.get_event(event)
 
     def update(self):
-
+        # check whether the screen needs to be changed
         if self.state.next_state:
             change_state = self.state.next_state
             self.state.next_state = None
@@ -44,5 +48,5 @@ class Game:
         py.quit()
 
 
-game = Game(states, "MENU")
+game = Game(states, "HIGHSCORES")
 game.run()

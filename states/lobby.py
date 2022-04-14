@@ -30,8 +30,7 @@ class Lobby:
             self.next_state = "LOCAL"
          
         if self.button_create.pressed(event):
-            # cfg.lobby_id = nt.lobby_code()
-            # probably put try clause in the conect or create !
+
             try:
                 nt.connect_server()
                 nt.create_lobby()
@@ -43,7 +42,7 @@ class Lobby:
                 print(e, 'server is not online.')
 
         if self.button_confirm.pressed(event):
-            # try except here also proabbly
+
             nt.connect_server()
             if nt.check_data(self.text_box.text):
                 cfg.lobby_id = self.text_box.text

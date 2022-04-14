@@ -16,3 +16,13 @@ win lose screen is scuffed - make a image and only blit winner if winner?
 run function that will update cfg. winner if win !.
 iswin integration
 git webook to server
+
+
+
+
+
+----------=
+highscores screen
+mass image imports 
+fix socket close /  repoen on lobby
+

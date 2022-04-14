@@ -26,7 +26,7 @@ class Login:
 
             if not db.check_data(self.text_box.text):
                 print('new user created')
-                db.add_data(self.text_box.text)
+                db.add_username(self.text_box.text)
 
             cfg.username = self.text_box.text
             self.next_state = "LOBBY"
