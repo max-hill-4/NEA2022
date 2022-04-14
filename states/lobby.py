@@ -37,6 +37,7 @@ class Lobby:
                 cfg.get_data = True
                 t = th.Thread(target=nt.get_data)
                 t.start()
+                cfg.player = 1
                 self.next_state = "WAIT"
             except Exception as e:
                 print(e, 'server is not online.')

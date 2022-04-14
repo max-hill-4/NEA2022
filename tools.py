@@ -1,6 +1,6 @@
 import pygame as py
 import config as cfg
-
+import database as db
 
 class InputBox:
     """Creates box with positional parameters
@@ -118,6 +118,6 @@ def is_win():
                 count += 1
             if count == 3:
                 if data == cfg.player:
-                    cfg.winner = True
-                    print(cfg.winner)
+                    cfg.winner = True 
+                    db.add_score(cfg.username)
                 return data

@@ -45,7 +45,9 @@ def check_data(game_lobby):
 
 
 def close():
+    global s
     s.close()
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
 def update_lobby(index, value):

@@ -7,9 +7,9 @@ class Result:
     def __init__(self):
         self.done = False
         self.next_state = None
-        self.button_play = tl.Button(cfg.images['button_replay'], 110, 300)
-        self.button_highscores = tl.Button(cfg.images['button_highscores'], 430, 300)
-        self.button_quit = tl.Button(cfg.images['button_quit'], 500, 200)
+        self.button_play = tl.Button(cfg.images['button_replay'], 270, 200)
+        self.button_highscores = tl.Button(cfg.images['button_highscores'], 270, 250)
+        self.button_quit = tl.Button(cfg.images['button_quit'], 270, 300)
         self.object_list = (self.button_play, self.button_quit,
                             self.button_highscores)
 
@@ -20,20 +20,21 @@ class Result:
 
         if self.button_play.pressed(event):
             
-            if cfg.player == 1:
-                cfg.game_data[1] = False
-                nt.update_lobby(1, False)
-                nt.update_lobby(2, [0, 0, 0, 0, 0, 0, 0, 0, 0])
-                self.next_state = "WAIT"
-            else:
-                if cfg.game_data[1] == False:
-                    nt.update_lobby(1, True)
+            try:
+                if cfg.player == 1:
+                    cfg.game_data[1] = False
+                    nt.update_lobby(1, False)
+                    nt.update_lobby(2, [0, 0, 0, 0, 0, 0, 0, 0, 0])
                     self.next_state = "WAIT"
-                    
-        if button_highscores.pressed(event):
-            self.next_state = "LOBBY"
+                if cfg.player == 2:
+                    if cfg.game_data[1] == False:
+                        nt.update_lobby(1, True)
+                        self.next_state = "WAIT"
+            except:
+                cfg.game_data = 1, False, [0, 0, 0, 0, 0, 0, 0, 0, 0] 
+                self.next_state = "LOCAL"
 
-        if button_highscores.pressed(event):
+        if self.button_highscores.pressed(event):
             self.next_state = "HIGHSCORES"
     
     def state_draw(self, window):

@@ -39,6 +39,7 @@ def add_username(data):
 def add_score(data):
     # add one to 'data' = username in score field
     TEXT = (f"UPDATE scores SET score = score + 1 WHERE username = '{data}';")
+    print("added ot the score!")
     mycursor.execute(TEXT)
     conn.commit()
 

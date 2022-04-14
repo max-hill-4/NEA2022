@@ -16,7 +16,7 @@ gameboard_column = {'col_0': 25, 'col_1': 125, 'col_2': 225}
 # these variables trigger me a bit - global for diffrent parts int he game.
 lobby_id = None
 game_data = 1, False, [0, 0, 0, 0, 0, 0, 0, 0, 0]
-player = 1
+player = 0
 winner = False
 get_data = True
 username = None
@@ -60,6 +60,7 @@ files =[
 "blank.png",
 "win.png",
 "lose.png",
+"error.png"
 ]
 images = {}
 

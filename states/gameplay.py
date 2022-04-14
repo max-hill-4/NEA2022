@@ -34,6 +34,7 @@ class Gameplay:
                     # send the new game data to the server
                     nt.update_lobby(2, cfg.game_data[2])
                     # changes the player move to enemy
+                    
                     print("")
         if tl.is_win():
             self.next_state = "RESULT"
