@@ -88,7 +88,6 @@ class Gameboard:
     def __init__(self):
         self.object_list = {}
         self.object_list_values = list(self.object_list.values())
-        self.draw_list = []
         for x in cfg.gameboard_row:
             for y in cfg.gameboard_column:
                 self.object_list[x+y] = Button(cfg.images['blank'],
